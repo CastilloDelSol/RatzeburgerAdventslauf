@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ratzeburger Adventslauf 2025 - Statistiken</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Plotly -->
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+<style>
+:root {
+  --bg: #0D1117;
+  --card: #161B22;
+  --text: #E6EDF3;
+  --muted: #9BA5B4;
+  --border: #2D333B;
+  --accent: #0EA5E9;
+  --radius: 14px;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  width: 100%;
+  max-width: 1200px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+
+/* Kachel-Grids */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.box {
+  background: var(--card);
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.box-value {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.box-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chart-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  border: 1px solid var(--border);
+  margin-top: 25px;
+}
+
+/* Nationality table */
+.nationality-card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.nationality-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.nationality-table th,
+.nationality-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nationality-table th {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* HEADER "Anzahl" rechts */
+.nationality-table th:nth-child(2) {
+  text-align: right;
+}
+
+/* COUNT right aligned */
+.nationality-table td.count {
+  text-align: right;
+}
+
+/* ALIGN FLAG + LAND */
+.flag-row {
+  display: flex;
+  align-items: center;
+}
+
+.nationality-flag {
+  width: 24px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  margin-right: 6px;
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<h1>Ratzeburger Adventslauf 2025</h1>
+<div class="subtitle">Statistik Dashboard</div>
+
+<!-- TOP ROW (3 boxes) -->
+<div class="grid-3">
+  <div class="box">
+    <div class="box-value" id="totalParticipants">–</div>
+    <div class="box-label">Teilnehmer</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="nationalCount">–</div>
+    <div class="box-label">Deutschland</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="internationalCount">–</div>
+    <div class="box-label">International</div>
+  </div>
+</div>
+
+<!-- SECOND ROW (4 boxes) -->
+<div class="grid-4" style="margin-top: 18px;">
+  <div class="box">
+    <div class="box-value" id="distanceMin">–</div>
+    <div class="box-label">Minimum (km)</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="distanceAvg">–</div>
+    <div class="box-label">Durchschnitt (km)</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="distanceMedian">–</div>
+    <div class="box-label">Median (km)</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="distanceMax">–</div>
+    <div class="box-label">Maximum (km)</div>
+  </div>
+</div>
+
+<!-- NATIONALITY TABLE -->
+<div class="chart-card">
+<div class="nationality-card-title">Teilnehmer nach Nationalität (Quelle: <a href="https://my.raceresult.com/335470/participants" target="_blank" style="color: var(--accent); text-decoration: none;">https://my.raceresult.com/335470/participants</a>)</div>
+  <table class="nationality-table" id="nationalityTable">
+    <thead>
+      <tr>
+        <th>Land</th>
+        <th>Anzahl</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<!-- PERCENTILE PLOT -->
+<div class="chart-card">
+  <div id="percentilePlot" style="height: 600px;"></div>
+</div>
+
+</div>
+
+<script>
+function formatNumber(value) {
+  let s = String(value).replace(".", ",");
+  return s.replace(/\./g, "");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  Promise.all([
+    fetch("./statistics.json").then(r => r.json()),
+    fetch("./nationality.json").then(r => r.json())
+  ])
+    .then(([stats, nationalities]) => {
+      buildDashboard(stats, nationalities);
+      buildNationalityTable(nationalities);
+    })
+    .catch(err => console.error("Could not load JSON files", err));
+});
+
+// ==================== DASHBOARD ======================
+function buildDashboard(stats, nationalities) {
+  const total = nationalities.reduce((sum, e) => sum + e.count, 0);
+  const germany = nationalities.find(e => e.code === "de")?.count || 0;
+  const international = total - germany;
+
+  document.getElementById("totalParticipants").textContent = String(total);
+  document.getElementById("nationalCount").textContent = String(germany);
+  document.getElementById("internationalCount").textContent = String(international);
+
+  document.getElementById("distanceMin").textContent = formatNumber(stats.distance_min_km.toFixed(1));
+  document.getElementById("distanceAvg").textContent = formatNumber(stats.distance_avg_km.toFixed(1));
+  document.getElementById("distanceMedian").textContent = formatNumber(stats.distance_median_km.toFixed(1));
+  document.getElementById("distanceMax").textContent = formatNumber(stats.distance_max_km.toFixed(0));
+
+  buildPercentilePlot(stats.percentiles_km);
+}
+
+// ==================== NATIONALITY TABLE ==================
+function buildNationalityTable(list) {
+  const sorted = [...list].sort((a, b) => b.count - a.count);
+  const tbody = document.querySelector("#nationalityTable tbody");
+
+  sorted.forEach(entry => {
+    const tr = document.createElement("tr");
+
+    const tdLand = document.createElement("td");
+    const tdCount = document.createElement("td");
+    tdCount.classList.add("count");
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "flag-row";
+
+    if (entry.flag) {
+      const img = document.createElement("img");
+      img.className = "nationality-flag";
+      img.src = entry.flag;
+      img.alt = entry.code;
+      wrapper.appendChild(img);
+    }
+
+    const span = document.createElement("span");
+    span.textContent = entry.land;
+    wrapper.appendChild(span);
+
+    tdLand.appendChild(wrapper);
+    tdCount.textContent = entry.count;
+
+    tr.appendChild(tdLand);
+    tr.appendChild(tdCount);
+    tbody.appendChild(tr);
+  });
+}
+
+// ==================== Percentile Plot =====================
+function buildPercentilePlot(percentileData) {
+
+  const entries = Object.entries(percentileData)
+    .sort((a, b) => parseFloat(a[0]) - parseFloat(b[0]));
+
+  const percentiles = entries.map(e => parseFloat(e[0]));
+  const distances   = entries.map(e => e[1]);
+
+  const mainTicks = [0.1, 1, 10, 100, 1000];
+  const mainTickLabels = mainTicks.map(v => formatNumber(v));
+
+  let minorTicks = [];
+  for (let decade of [0.1, 1, 10, 100, 1000]) {
+    for (let m = 2; m <= 9; m++) minorTicks.push(decade * (m / 10));
+  }
+
+  const trace = {
+    x: percentiles,
+    y: distances,
+    mode: "lines+markers",
+    line: { color: "#0EA5E9", width: 3 },
+    marker: { color: "#0EA5E9", size: 4 }
+  };
+
+  const layout = {
+    title: "Perzentilverteilung der Anreiseentfernungen",
+    titlefont: { color: "#E6EDF3", size: 18 },
+    paper_bgcolor: "rgba(0,0,0,0)",
+    plot_bgcolor: "rgba(0,0,0,0)",
+    margin: { t: 50, r: 20, b: 60, l: 80 },
+
+    xaxis: {
+      title: "Perzentil [%]",
+      dtick: 10,
+      gridcolor: "rgba(140,140,140,0.2)",
+      tickfont: { size: 12, color: "#E6EDF3" },
+      titlefont: { size: 14, color: "#E6EDF3" },
+      minor: { dtick: 5, showgrid: true, gridcolor: "rgba(140,140,140,0.1)" }
+    },
+
+    yaxis: {
+      title: "Anreise Entfernung [km]",
+      type: "log",
+      tickvals: mainTicks,
+      ticktext: mainTickLabels,
+      gridcolor: "rgba(140,140,140,0.2)",
+      tickfont: { size: 12, color: "#E6EDF3" },
+      titlefont: { size: 14, color: "#E6EDF3" },
+      minor: { tickvals: minorTicks, showgrid: true, gridcolor: "rgba(140,140,140,0.1)" }
+    }
+  };
+
+  Plotly.newPlot("percentilePlot", [trace], layout, {
+    responsive: true,
+    displayModeBar: false
+  });
+}
+</script>
+
+</body>
+</html>

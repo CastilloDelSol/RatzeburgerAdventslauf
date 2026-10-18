@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ratzeburger Adventslauf 2025 - Statistiken</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Plotly -->
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+<!-- Include Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+:root {
+  --bg: #0D1117;
+  --card: #161B22;
+  --text: #E6EDF3;
+  --muted: #9BA5B4;
+  --border: #2D333B;
+  --accent: #0EA5E9;
+  --radius: 14px;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  width: 100%;
+  max-width: 1200px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+
+/* Kachel-Grids */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.box {
+  background: var(--card);
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.box-value {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.box-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chart-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  border: 1px solid var(--border);
+  margin-top: 25px;
+}
+
+/* Nationality table */
+.nationality-card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.nationality-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.nationality-table th,
+.nationality-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nationality-table th {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* HEADER "Anzahl" rechts */
+.nationality-table th:nth-child(2) {
+  text-align: right;
+}
+
+/* COUNT right aligned */
+.nationality-table td.count {
+  text-align: right;
+}
+
+/* ALIGN FLAG + LAND */
+.flag-row {
+  display: flex;
+  align-items: center;
+}
+
+.nationality-flag {
+  width: 24px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  margin-right: 6px;
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+<h1>Ratzeburger Adventslauf 2025</h1>
+<div class="subtitle">Statistik Dashboard</div>
+
+<!-- TOP ROW (3 boxes) -->
+<div class="grid-3">
+  <div class="box">
+    <div class="box-value" id="totalParticipants">–</div>
+    <div class="box-label">Teilnehmer</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="nationalCount">–</div>
+    <div class="box-label">Deutschland</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="internationalCount">–</div>
+    <div class="box-label">International</div>
+  </div>
+</div>
+
+<!-- SECOND ROW (4 boxes) -->
+<div class="grid-4" style="margin-top: 18px;">
+  <div class="box">
+    <div class="box-value" id="distanceMin">–</div>
+    <div class="box-label">Minimum (km)</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="distanceAvg">–</div>
+    <div class="box-label">Durchschnitt (km)</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="distanceMedian">–</div>
+    <div class="box-label">Median (km)</div>
+  </div>
+
+  <div class="box">
+    <div class="box-value" id="distanceMax">–</div>
+    <div class="box-label">Maximum (km)</div>
+  </div>
+</div>
+
+<!-- NATIONALITY TABLE -->
+<div class="chart-card">
+<div class="nationality-card-title">Teilnehmer nach Nationalität (Quelle: <a href="https://my.raceresult.com/335470/participants" target="_blank" style="color: var(--accent); text-decoration: none;">https://my.raceresult.com/335470/participants</a>)</div>
+  <table class="nationality-table" id="nationalityTable">
+    <thead>
+      <tr>
+        <th>Land</th>
+        <th>Anzahl</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="chart-card">
+  <div id="chartKurzPyramid" style="height: 600px;"></div>
+</div>
+
+
+<div class="chart-card">
+  <div id="chartKurzAbs" style="height: 500px;"></div>
+</div>
+
+<div class="chart-card">
+  <div id="chartKurzRel" style="height: 500px;"></div>
+</div>
+
+<div class="chart-card">
+  <div id="chartKurzDonut" style="height: 400px;"></div>
+</div>
+
+
+<!-- PERCENTILE PLOT -->
+<div class="chart-card">
+  <div id="percentilePlot" style="height: 600px;"></div>
+</div>
+
+<canvas id="chartKurzPyramid" height="480"></canvas>
+
+<div style="
+  display:flex;
+  justify-content:space-between;
+  margin-top:10px;
+  padding:0 10px;
+  font-family:Inter, sans-serif;
+  font-size:14px;
+  color:#E6EDF3;
+">
+  <div>
+      <span style="
+          background:#0EA5E9;
+          display:inline-block;
+          width:14px;
+          height:14px;
+          border-radius:3px;
+          margin-right:6px;
+      "></span>
+      M
+  </div>
+
+  <div>
+      <span style="
+          background:#E34A2A;
+          display:inline-block;
+          width:14px;
+          height:14px;
+          border-radius:3px;
+          margin-right:6px;
+      "></span>
+      W
+  </div>
+</div>
+
+</div>
+
+<script>
+// ==================== Helpers ======================
+function formatNumber(value) {
+  let s = String(value).replace(".", ",");
+  return s.replace(/\./g, "");
+}
+
+// ===================================================
+//   SINGLE INIT: alles in EINEM DOMContentLoaded
+// ===================================================
+document.addEventListener("DOMContentLoaded", () => {
+
+  Promise.all([
+    fetch("./statistics.json").then(r => r.json()),
+    fetch("./nationality.json").then(r => r.json()),
+    fetch("./age_buckets_by_distance.json").then(r => r.json())
+  ])
+  .then(([stats, nationalities, ageData]) => {
+
+    buildDashboard(stats, nationalities);
+    buildNationalityTable(nationalities);
+
+    // ===== AGE GROUP PLOTS: KURZSTRECKE =====
+    buildAgeGroupCharts(
+      ageData,
+      "Kurzstrecke",
+      "chartKurzAbs",
+      "chartKurzRel",
+      "chartKurzDonut"
+    );
+
+    buildAgePyramidChart(ageData, "Kurzstrecke", "chartKurzPyramid");
+    buildKurzstreckePyramid();
+
+
+    // ===== OPTIONAL =====
+    // buildAgeGroupCharts(ageData, "Hauptlauf", ...);
+    // buildAgeGroupCharts(ageData, "Kinderlauf", ...);
+
+    // === Perzentile
+    buildPercentilePlot(stats.percentiles_km);
+
+  })
+  .catch(err => console.error("INIT-Error:", err));
+
+});
+
+
+// ==================== Dashboard Summary ======================
+function buildDashboard(stats, nationalities) {
+  const total = nationalities.reduce((sum, e) => sum + e.count, 0);
+  const germany = nationalities.find(e => e.code === "de")?.count || 0;
+  const international = total - germany;
+
+  document.getElementById("totalParticipants").textContent = String(total);
+  document.getElementById("nationalCount").textContent = String(germany);
+  document.getElementById("internationalCount").textContent = String(international);
+
+  document.getElementById("distanceMin").textContent    = formatNumber(stats.distance_min_km.toFixed(1));
+  document.getElementById("distanceAvg").textContent    = formatNumber(stats.distance_avg_km.toFixed(1));
+  document.getElementById("distanceMedian").textContent = formatNumber(stats.distance_median_km.toFixed(1));
+  document.getElementById("distanceMax").textContent    = formatNumber(stats.distance_max_km.toFixed(0));
+}
+
+
+// ==================== Nationality Table ======================
+function buildNationalityTable(list) {
+  const sorted = [...list].sort((a, b) => b.count - a.count);
+  const tbody = document.querySelector("#nationalityTable tbody");
+
+  sorted.forEach(entry => {
+    const tr = document.createElement("tr");
+
+    const tdLand = document.createElement("td");
+    const tdCount = document.createElement("td");
+    tdCount.classList.add("count");
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "flag-row";
+
+    if (entry.flag) {
+      const img = document.createElement("img");
+      img.className = "nationality-flag";
+      img.src = entry.flag;
+      img.alt = entry.code;
+      wrapper.appendChild(img);
+    }
+
+    const span = document.createElement("span");
+    span.textContent = entry.land;
+    wrapper.appendChild(span);
+
+    tdLand.appendChild(wrapper);
+    tdCount.textContent = entry.count;
+
+    tr.appendChild(tdLand);
+    tr.appendChild(tdCount);
+    tbody.appendChild(tr);
+  });
+}
+
+
+// ==================== Percentile Plot ======================
+function buildPercentilePlot(percentileData) {
+
+  const entries = Object.entries(percentileData)
+    .sort((a, b) => parseFloat(a[0]) - parseFloat(b[0]));
+
+  const percentiles = entries.map(e => parseFloat(e[0]));
+  const distances   = entries.map(e => e[1]);
+
+  const mainTicks = [0.1, 1, 10, 100, 1000];
+  const mainTickLabels = mainTicks.map(v => formatNumber(v));
+
+  let minorTicks = [];
+  for (let decade of [0.1, 1, 10, 100, 1000]) {
+    for (let m = 2; m <= 9; m++) minorTicks.push(decade * (m / 10));
+  }
+
+  const trace = {
+    x: percentiles,
+    y: distances,
+    mode: "lines+markers",
+    line: { color: "#0EA5E9", width: 3 },
+    marker: { color: "#0EA5E9", size: 4 }
+  };
+
+  const layout = {
+    title: "Perzentilverteilung der Anreiseentfernungen",
+    paper_bgcolor: "rgba(0,0,0,0)",
+    plot_bgcolor: "rgba(0,0,0,0)",
+    font: { color: "#E6EDF3" },
+    margin: { t: 50, r: 20, b: 60, l: 80 },
+
+    xaxis: {
+      title: "Perzentil [%]",
+      dtick: 10,
+      gridcolor: "rgba(140,140,140,0.2)",
+      minor: { dtick: 5, showgrid: true, gridcolor: "rgba(140,140,140,0.1)" }
+    },
+
+    yaxis: {
+      title: "Anreise Entfernung [km]",
+      type: "log",
+      tickvals: mainTicks,
+      ticktext: mainTickLabels,
+      gridcolor: "rgba(140,140,140,0.2)",
+      minor: { tickvals: minorTicks, showgrid: true, gridcolor: "rgba(140,140,140,0.1)" }
+    }
+  };
+
+  Plotly.newPlot("percentilePlot", [trace], layout,
+    { responsive: true, displayModeBar: false }
+  );
+}
+
+
+// ==================== AGEGROUP PLOTS (ABS, REL, DONUT) ======================
+function buildAgeGroupCharts(ageData, sectionName, targetAbsolute, targetRelative, targetDonut) {
+    const group = ageData[sectionName];
+    if (!group) return;
+
+    const labels = Object.keys(group);
+    const m_vals = labels.map(k => group[k]["M"]);
+    const w_vals = labels.map(k => group[k]["W"]);
+
+    // ===== Absolute =====
+    Plotly.newPlot(targetAbsolute, [
+        {
+            y: labels, x: m_vals,
+            type: "bar",
+            name: "M",
+            orientation: "h",
+            marker: { color: "#0EA5E9" }
+        },
+        {
+            y: labels, x: w_vals,
+            type: "bar",
+            name: "W",
+            orientation: "h",
+            marker: { color: "#E34A2A" }
+        }
+    ], {
+        title: sectionName + " – Altersklassen (absolut)",
+        barmode: "stack",
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+        font: { color: "#E6EDF3" },
+        margin: { l: 80, r: 20, t: 50, b: 40 }
+    }, {displayModeBar:false, responsive:true});
+
+    // ===== Relative =====
+    const rel_m = [];
+    const rel_w = [];
+    for (let k of labels) {
+        const total = group[k]["M"] + group[k]["W"];
+        rel_m.push(total ? (group[k]["M"] / total) * 100 : 0);
+        rel_w.push(total ? (group[k]["W"] / total) * 100 : 0);
+    }
+
+    Plotly.newPlot(targetRelative, [
+        {
+            y: labels, x: rel_m,
+            type: "bar",
+            name: "M (%)",
+            orientation: "h",
+            marker: { color: "#0EA5E9" }
+        },
+        {
+            y: labels, x: rel_w,
+            type: "bar",
+            name: "W (%)",
+            orientation: "h",
+            marker: { color: "#E34A2A" }
+        }
+    ], {
+        title: sectionName + " – Geschlechterverteilung (%)",
+        barmode: "stack",
+        xaxis: { range: [0, 100] },
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+        font: { color: "#E6EDF3" },
+        margin: { l: 80, r: 20, t: 50, b: 40 }
+    }, {displayModeBar:false, responsive:true});
+
+    // ===== Donut =====
+    const totalM = m_vals.reduce((a,b)=>a+b,0);
+    const totalW = w_vals.reduce((a,b)=>a+b,0);
+    const total  = totalM + totalW;
+
+    Plotly.newPlot(targetDonut, [{
+        labels: ["M", "W"],
+        values: [totalM, totalW],
+        type: "pie",
+        hole: 0.55,
+        marker: { colors: ["#0EA5E9", "#E34A2A"] },
+        textinfo: "label+percent",
+        textfont: { color: "#E6EDF3" }
+    }], {
+        title: sectionName + " – Gesamtverteilung M/W",
+        annotations: [{
+            text: total + "<br>TN",
+            font: { size: 18, color: "#E6EDF3" },
+            showarrow: false
+        }],
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+        font: { color: "#E6EDF3" }
+    }, {displayModeBar:false, responsive:true});
+}
+
+// ==================== AGE PYRAMID CHART ======================
+function buildAgePyramidChart(ageData, sectionName, targetDiv) {
+    const group = ageData[sectionName];
+    if (!group) return;
+
+    // --- SORT BUCKETS in correct order ---
+    let labels = Object.keys(group).sort((a, b) => {
+        const parse = s => {
+            // Youth classes come first
+            if (s.startsWith("J U")) return parseInt(s.replace("J U", ""), 10) - 1000;
+            if (s.startsWith("K U")) return parseInt(s.replace("K U", ""), 10) - 2000;
+
+            // Numeric adult classes (20, 30, 35...)
+            return parseInt(s, 10);
+        };
+        return parse(a) - parse(b);
+    });
+
+    // Force labels to strings (CRITICAL FIX)
+    labels = labels.map(String);
+
+    // Values
+    const m_vals = labels.map(k => group[k]["M"]);
+    const w_vals = labels.map(k => group[k]["W"]);
+
+    // For pyramid: males must be negative (left side)
+    const m_negative = m_vals.map(v => -v);
+
+    // Compute symmetric axis max
+    const maxVal = Math.max(
+        ...m_vals,
+        ...w_vals
+    );
+    const axisMax = Math.ceil(maxVal / 10) * 10 + 10; // round + padding (e.g. 80)
+  
+    const traceM = {
+        y: labels,
+        x: m_negative,
+        name: "M",
+        orientation: "h",
+        type: "bar",
+        marker: { color: "#0EA5E9" },
+    
+        customdata: labels.map((lab, idx) => `M${lab}: ${m_vals[idx]}`),
+    
+        // Verschiebt den Hover-Ankerpunkt links nach außen
+        hovertemplate: "%{customdata}<extra></extra>",
+        hoverinfo: "text",
+        offsetgroup: "m",
+        hoverlabel: { align: "right" },  // Tooltip nach LINKS ausrichten
+    
+        // Trick: Hover-Punkt minimal weiter außen platzieren
+        cliponaxis: false
+    };
+    
+    const traceW = {
+        y: labels,
+        x: w_vals,
+        name: "W",
+        orientation: "h",
+        type: "bar",
+        marker: { color: "#E34A2A" },
+    
+        customdata: labels.map((lab, idx) => `W${lab}: ${w_vals[idx]}`),
+    
+        hovertemplate: "%{customdata}<extra></extra>",
+        hoverinfo: "text",
+        offsetgroup: "w",
+        hoverlabel: { align: "left" },  // Tooltip nach RECHTS
+    
+        cliponaxis: false
+    };
+
+
+    // Build evenly spaced tick values
+    const ticks = [];
+    for (let i = -axisMax; i <= axisMax; i += 10) ticks.push(i);
+
+    const layout = {
+        title: sectionName + " – Geschlecht / Altersklassen (Pyramide)",
+        barmode: "overlay",
+        bargap: 0.1,
+
+        paper_bgcolor: "rgba(0,0,0,0)",
+        plot_bgcolor: "rgba(0,0,0,0)",
+        font: { color: "#E6EDF3" },
+
+        // --- X-AXIS (Male left, Female right) ---
+        xaxis: {
+            title: "Teilnehmer",
+            range: [-axisMax, axisMax],
+            dtick: 10,
+            tickvals: ticks,
+            ticktext: ticks.map(v => Math.abs(v)), // show positive values only
+            gridcolor: "rgba(140,140,140,0.2)",
+            minor: {
+                dtick: 5,
+                showgrid: true,
+                gridcolor: "rgba(140,140,140,0.1)"
+            }
+        },
+
+        // --- Y-AXIS (CATEGORY MODE!) ---
+        yaxis: {
+            type: "category",
+            categoryorder: "array",
+            categoryarray: labels,   // ensure correct bucket order
+            gridcolor: "rgba(140,140,140,0.2)",
+            showgrid: false,
+            minor: {
+                showgrid: false,
+                gridcolor: "rgba(140,140,140,0.1)"
+            }
+        },
+
+        margin: { l: 80, r: 50, t: 60, b: 40 }
+    };
+
+    Plotly.newPlot(targetDiv, [traceM, traceW], layout, {
+        displayModeBar: false,
+        responsive: true
+    });
+}
+
+  async function buildKurzstreckePyramid() {
+
+    const response = await fetch("./age_buckets_by_distance.json");
+    const ageData = await response.json();
+
+    const group = ageData["Kurzstrecke"];
+    const labels = Object.keys(group)
+        .map(String); // ensure strings
+
+    const m_vals = labels.map(k => -group[k]["M"]); // M left
+    const w_vals = labels.map(k =>  group[k]["W"]); // W right
+
+    const maxVal = Math.max(
+        ...m_vals.map(v => Math.abs(v)),
+        ...w_vals
+    );
+    const axisMax = Math.ceil(maxVal / 10) * 10;
+
+    const ctx = document.getElementById("chartKurzPyramid").getContext("2d");
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: "M",
+                    data: m_vals,
+                    backgroundColor: "#0EA5E9",
+                    borderSkipped: false
+                },
+                {
+                    label: "W",
+                    data: w_vals,
+                    backgroundColor: "#E34A2A",
+                    borderSkipped: false
+                }
+            ]
+        },
+
+        options: {
+            indexAxis: "y",
+
+            animation: {
+                duration: 1000,
+                easing: "easeOutQuart"
+            },
+
+            responsive: true,
+            maintainAspectRatio: false,
+
+            scales: {
+                x: {
+                    min: -axisMax,
+                    max: axisMax,
+
+                    ticks: {
+                        color: "#E6EDF3",
+                        callback: value => Math.abs(value)
+                    },
+
+                    grid: {
+                        color: "rgba(140,140,140,0.2)"
+                    }
+                },
+
+                y: {
+                    ticks: { color: "#E6EDF3" },
+                    grid: { display: false }
+                }
+            },
+
+            plugins: {
+                legend: { display: false },
+
+                tooltip: {
+                    callbacks: {
+                        label: function(ctx) {
+                            const age = ctx.label;
+                            const label = ctx.dataset.label; // M/W
+                            const val = Math.abs(ctx.raw);
+                            return `${label}${age}: ${val}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+
+</script>
+
+</body>
+</html>

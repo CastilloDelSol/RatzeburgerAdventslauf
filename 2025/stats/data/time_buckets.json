@@ -1,0 +1,9078 @@
+{
+  "metadata": {
+    "created_at": "2025-12-12T10:01:13.207465",
+    "script_version": "1.0.0",
+    "race_date": "2025-11-30",
+    "timezone": "Europe/Berlin",
+    "races": [
+      {
+        "race_id": 0,
+        "name": "Lauf um den Ratzeburger See",
+        "distance_km": 26.0,
+        "start_time": "11:15:00",
+        "dataSource": "measured",
+        "model": null,
+        "participants": 1798,
+        "buyers": 111,
+        "status_counts": {
+          "FIN": 1284,
+          "DNF": 10,
+          "DSQ": 0,
+          "DNS_A": 457,
+          "DNS_B": 47
+        }
+      },
+      {
+        "race_id": 1,
+        "name": "Lauf um den Küchensee",
+        "distance_km": 7.5,
+        "start_time": "11:15:00",
+        "dataSource": "measured",
+        "model": null,
+        "participants": 862,
+        "buyers": 59,
+        "status_counts": {
+          "FIN": 656,
+          "DNF": 6,
+          "DSQ": 0,
+          "DNS_A": 159,
+          "DNS_B": 41
+        }
+      },
+      {
+        "race_id": 2,
+        "name": "Kinderlauf durch den Kurpark",
+        "distance_km": 1.5,
+        "start_time": "11:00:00",
+        "dataSource": "estimated",
+        "model": {
+          "gaussian_distribution": {
+            "mean_time_seconds": 800,
+            "stddev_seconds": 150
+          }
+        },
+        "participants": 359,
+        "buyers": 25,
+        "status_counts": {
+          "FIN": 326,
+          "DNF": 0,
+          "DSQ": 0,
+          "DNS_A": 33,
+          "DNS_B": 0
+        }
+      }
+    ]
+  },
+  "start_histogram_buckets": [
+    {
+      "range_start": 40500,
+      "range_end": 40501,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40501,
+      "range_end": 40502,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 21
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40502,
+      "range_end": 40503,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 21
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40503,
+      "range_end": 40504,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 24
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40504,
+      "range_end": 40505,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 19
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40505,
+      "range_end": 40506,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 23
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40506,
+      "range_end": 40507,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 19
+        },
+        {
+          "race_id": 1,
+          "count": 12
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40507,
+      "range_end": 40508,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 18
+        },
+        {
+          "race_id": 1,
+          "count": 11
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40508,
+      "range_end": 40509,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 23
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40509,
+      "range_end": 40510,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 12
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40510,
+      "range_end": 40511,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 18
+        },
+        {
+          "race_id": 1,
+          "count": 10
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40511,
+      "range_end": 40512,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 20
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40512,
+      "range_end": 40513,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 21
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40513,
+      "range_end": 40514,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 22
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40514,
+      "range_end": 40515,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 19
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40515,
+      "range_end": 40516,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 17
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40516,
+      "range_end": 40517,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 18
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40517,
+      "range_end": 40518,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 19
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40518,
+      "range_end": 40519,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40519,
+      "range_end": 40520,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40520,
+      "range_end": 40521,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40521,
+      "range_end": 40522,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40522,
+      "range_end": 40523,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40523,
+      "range_end": 40524,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40524,
+      "range_end": 40525,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40525,
+      "range_end": 40526,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40526,
+      "range_end": 40527,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 17
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40527,
+      "range_end": 40528,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40528,
+      "range_end": 40529,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 15
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40529,
+      "range_end": 40530,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40530,
+      "range_end": 40531,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40531,
+      "range_end": 40532,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40532,
+      "range_end": 40533,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 12
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40533,
+      "range_end": 40534,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40534,
+      "range_end": 40535,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40535,
+      "range_end": 40536,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40536,
+      "range_end": 40537,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 15
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40537,
+      "range_end": 40538,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40538,
+      "range_end": 40539,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40539,
+      "range_end": 40540,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40540,
+      "range_end": 40541,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40541,
+      "range_end": 40542,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40542,
+      "range_end": 40543,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40543,
+      "range_end": 40544,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 12
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40544,
+      "range_end": 40545,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40545,
+      "range_end": 40546,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40546,
+      "range_end": 40547,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40547,
+      "range_end": 40548,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40548,
+      "range_end": 40549,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40549,
+      "range_end": 40550,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40550,
+      "range_end": 40551,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40551,
+      "range_end": 40552,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 12
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40552,
+      "range_end": 40553,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40553,
+      "range_end": 40554,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 7
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40554,
+      "range_end": 40555,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 12
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40555,
+      "range_end": 40556,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40556,
+      "range_end": 40557,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 7
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40557,
+      "range_end": 40558,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40558,
+      "range_end": 40559,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40559,
+      "range_end": 40560,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 10
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40560,
+      "range_end": 40561,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40561,
+      "range_end": 40562,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40562,
+      "range_end": 40563,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40563,
+      "range_end": 40564,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40564,
+      "range_end": 40565,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40565,
+      "range_end": 40566,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40566,
+      "range_end": 40567,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40567,
+      "range_end": 40568,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 12
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40568,
+      "range_end": 40569,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40569,
+      "range_end": 40570,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40570,
+      "range_end": 40571,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40571,
+      "range_end": 40572,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40572,
+      "range_end": 40573,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40573,
+      "range_end": 40574,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40574,
+      "range_end": 40575,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40575,
+      "range_end": 40576,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40576,
+      "range_end": 40577,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40577,
+      "range_end": 40578,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40578,
+      "range_end": 40579,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40579,
+      "range_end": 40580,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 11
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40580,
+      "range_end": 40581,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40581,
+      "range_end": 40582,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40582,
+      "range_end": 40583,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40583,
+      "range_end": 40584,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40584,
+      "range_end": 40585,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40585,
+      "range_end": 40586,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40586,
+      "range_end": 40587,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 7
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40587,
+      "range_end": 40588,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40588,
+      "range_end": 40589,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40589,
+      "range_end": 40590,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 15
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40590,
+      "range_end": 40591,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 7
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40591,
+      "range_end": 40592,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 12
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40592,
+      "range_end": 40593,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40593,
+      "range_end": 40594,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 7
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40594,
+      "range_end": 40595,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40595,
+      "range_end": 40596,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 12
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40596,
+      "range_end": 40597,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40597,
+      "range_end": 40598,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40598,
+      "range_end": 40599,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 7
+        },
+        {
+          "race_id": 1,
+          "count": 9
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40599,
+      "range_end": 40600,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40600,
+      "range_end": 40601,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40601,
+      "range_end": 40602,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 5
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40602,
+      "range_end": 40603,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40603,
+      "range_end": 40604,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 11
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40604,
+      "range_end": 40605,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40605,
+      "range_end": 40606,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40606,
+      "range_end": 40607,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40607,
+      "range_end": 40608,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 7
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40608,
+      "range_end": 40609,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40609,
+      "range_end": 40610,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40610,
+      "range_end": 40611,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40611,
+      "range_end": 40612,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40612,
+      "range_end": 40613,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40613,
+      "range_end": 40614,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40614,
+      "range_end": 40615,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40615,
+      "range_end": 40616,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40616,
+      "range_end": 40617,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40617,
+      "range_end": 40618,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40618,
+      "range_end": 40619,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40619,
+      "range_end": 40620,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40620,
+      "range_end": 40621,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40621,
+      "range_end": 40622,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40622,
+      "range_end": 40623,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40623,
+      "range_end": 40624,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40624,
+      "range_end": 40625,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40625,
+      "range_end": 40626,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40626,
+      "range_end": 40627,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40627,
+      "range_end": 40628,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40628,
+      "range_end": 40629,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40629,
+      "range_end": 40630,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40630,
+      "range_end": 40631,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40631,
+      "range_end": 40632,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40632,
+      "range_end": 40633,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40633,
+      "range_end": 40634,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40634,
+      "range_end": 40635,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40635,
+      "range_end": 40636,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40636,
+      "range_end": 40637,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40637,
+      "range_end": 40638,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40638,
+      "range_end": 40639,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40639,
+      "range_end": 40640,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40640,
+      "range_end": 40641,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40641,
+      "range_end": 40642,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40642,
+      "range_end": 40643,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40643,
+      "range_end": 40644,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40644,
+      "range_end": 40645,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40645,
+      "range_end": 40646,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40646,
+      "range_end": 40647,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40647,
+      "range_end": 40648,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40648,
+      "range_end": 40649,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40649,
+      "range_end": 40650,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40650,
+      "range_end": 40651,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "split_rothenhusen_histogram_buckets": [
+    {
+      "range_start": 42600,
+      "range_end": 42900,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42900,
+      "range_end": 43200,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43200,
+      "range_end": 43500,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 25
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43500,
+      "range_end": 43800,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 54
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43800,
+      "range_end": 44100,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 101
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44100,
+      "range_end": 44400,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 159
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44400,
+      "range_end": 44700,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 223
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44700,
+      "range_end": 45000,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 241
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45000,
+      "range_end": 45300,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 192
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45300,
+      "range_end": 45600,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 133
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45600,
+      "range_end": 45900,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 80
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45900,
+      "range_end": 46200,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 53
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46200,
+      "range_end": 46500,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46500,
+      "range_end": 46800,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46800,
+      "range_end": 47100,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47100,
+      "range_end": 47400,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    }
+  ],
+  "registration_histogram_buckets": {
+    "saturday": [
+      {
+        "range_start": 43500,
+        "range_end": 43800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 43800,
+        "range_end": 44100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 4
+          },
+          {
+            "race_id": 2,
+            "count": 4
+          }
+        ]
+      },
+      {
+        "range_start": 44100,
+        "range_end": 44400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 44400,
+        "range_end": 44700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 44700,
+        "range_end": 45000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 45000,
+        "range_end": 45300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 45300,
+        "range_end": 45600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 45600,
+        "range_end": 45900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 45900,
+        "range_end": 46200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 46200,
+        "range_end": 46500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 46500,
+        "range_end": 46800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 46800,
+        "range_end": 47100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 47100,
+        "range_end": 47400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 47400,
+        "range_end": 47700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 13
+          },
+          {
+            "race_id": 1,
+            "count": 10
+          },
+          {
+            "race_id": 2,
+            "count": 9
+          }
+        ]
+      },
+      {
+        "range_start": 47700,
+        "range_end": 48000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 48000,
+        "range_end": 48300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 48300,
+        "range_end": 48600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 48600,
+        "range_end": 48900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 48900,
+        "range_end": 49200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 49200,
+        "range_end": 49500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 49500,
+        "range_end": 49800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 49800,
+        "range_end": 50100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 50100,
+        "range_end": 50400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 50400,
+        "range_end": 50700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 50700,
+        "range_end": 51000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 51000,
+        "range_end": 51300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 250
+          },
+          {
+            "race_id": 1,
+            "count": 173
+          },
+          {
+            "race_id": 2,
+            "count": 105
+          }
+        ]
+      },
+      {
+        "range_start": 51300,
+        "range_end": 51600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 51600,
+        "range_end": 51900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 51900,
+        "range_end": 52200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 52200,
+        "range_end": 52500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 52500,
+        "range_end": 52800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 52800,
+        "range_end": 53100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 53100,
+        "range_end": 53400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 53400,
+        "range_end": 53700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 53700,
+        "range_end": 54000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 54000,
+        "range_end": 54300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 54300,
+        "range_end": 54600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 54600,
+        "range_end": 54900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 178
+          },
+          {
+            "race_id": 1,
+            "count": 116
+          },
+          {
+            "race_id": 2,
+            "count": 101
+          }
+        ]
+      },
+      {
+        "range_start": 54900,
+        "range_end": 55200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 55200,
+        "range_end": 55500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 55500,
+        "range_end": 55800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 55800,
+        "range_end": 56100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 56100,
+        "range_end": 56400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 56400,
+        "range_end": 56700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 56700,
+        "range_end": 57000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 57000,
+        "range_end": 57300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 57300,
+        "range_end": 57600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 57600,
+        "range_end": 57900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 57900,
+        "range_end": 58200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 58200,
+        "range_end": 58500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 81
+          },
+          {
+            "race_id": 1,
+            "count": 70
+          },
+          {
+            "race_id": 2,
+            "count": 45
+          }
+        ]
+      },
+      {
+        "range_start": 58500,
+        "range_end": 58800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 58800,
+        "range_end": 59100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 59100,
+        "range_end": 59400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 59400,
+        "range_end": 59700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 59700,
+        "range_end": 60000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 60000,
+        "range_end": 60300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 60300,
+        "range_end": 60600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 60600,
+        "range_end": 60900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 60900,
+        "range_end": 61200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 61200,
+        "range_end": 61500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 61500,
+        "range_end": 61800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 61800,
+        "range_end": 62100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 28
+          },
+          {
+            "race_id": 1,
+            "count": 6
+          },
+          {
+            "race_id": 2,
+            "count": 19
+          }
+        ]
+      },
+      {
+        "range_start": 62100,
+        "range_end": 62400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      }
+    ],
+    "sunday": [
+      {
+        "range_start": 29100,
+        "range_end": 29400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 29400,
+        "range_end": 29700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 61
+          },
+          {
+            "race_id": 1,
+            "count": 27
+          },
+          {
+            "race_id": 2,
+            "count": 7
+          }
+        ]
+      },
+      {
+        "range_start": 29700,
+        "range_end": 30000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 30000,
+        "range_end": 30300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 30300,
+        "range_end": 30600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 30600,
+        "range_end": 30900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 30900,
+        "range_end": 31200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 31200,
+        "range_end": 31500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 31500,
+        "range_end": 31800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 31800,
+        "range_end": 32100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 32100,
+        "range_end": 32400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 32400,
+        "range_end": 32700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 32700,
+        "range_end": 33000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 33000,
+        "range_end": 33300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 419
+          },
+          {
+            "race_id": 1,
+            "count": 118
+          },
+          {
+            "race_id": 2,
+            "count": 26
+          }
+        ]
+      },
+      {
+        "range_start": 33300,
+        "range_end": 33600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 33600,
+        "range_end": 33900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 33900,
+        "range_end": 34200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 34200,
+        "range_end": 34500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 34500,
+        "range_end": 34800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 34800,
+        "range_end": 35100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 35100,
+        "range_end": 35400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 35400,
+        "range_end": 35700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 35700,
+        "range_end": 36000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 36000,
+        "range_end": 36300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 36300,
+        "range_end": 36600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 36600,
+        "range_end": 36900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 279
+          },
+          {
+            "race_id": 1,
+            "count": 110
+          },
+          {
+            "race_id": 2,
+            "count": 10
+          }
+        ]
+      },
+      {
+        "range_start": 36900,
+        "range_end": 37200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 37200,
+        "range_end": 37500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 37500,
+        "range_end": 37800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 37800,
+        "range_end": 38100,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 38100,
+        "range_end": 38400,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 38400,
+        "range_end": 38700,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 38700,
+        "range_end": 39000,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 39000,
+        "range_end": 39300,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 39300,
+        "range_end": 39600,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 39600,
+        "range_end": 39900,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 39900,
+        "range_end": 40200,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 40200,
+        "range_end": 40500,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 1
+          },
+          {
+            "race_id": 1,
+            "count": 1
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      },
+      {
+        "range_start": 40500,
+        "range_end": 40800,
+        "athlete_counts": [
+          {
+            "race_id": 0,
+            "count": 0
+          },
+          {
+            "race_id": 1,
+            "count": 0
+          },
+          {
+            "race_id": 2,
+            "count": 0
+          }
+        ]
+      }
+    ]
+  },
+  "finish_histogram_buckets": [    
+  {
+      "range_start": 39600,
+      "range_end": 39660,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },    
+	{
+      "range_start": 39660,
+      "range_end": 39720,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 39720,
+      "range_end": 39780,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 39780,
+      "range_end": 39840,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 39840,
+      "range_end": 39900,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 39900,
+      "range_end": 39960,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 39960,
+      "range_end": 40020,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "range_start": 40020,
+      "range_end": 40080,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 4
+        }
+      ]
+    },
+    {
+      "range_start": 40080,
+      "range_end": 40140,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 9
+        }
+      ]
+    },
+    {
+      "range_start": 40140,
+      "range_end": 40200,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 18
+        }
+      ]
+    },
+    {
+      "range_start": 40200,
+      "range_end": 40260,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 30
+        }
+      ]
+    },
+    {
+      "range_start": 40260,
+      "range_end": 40320,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 44
+        }
+      ]
+    },
+    {
+      "range_start": 40320,
+      "range_end": 40380,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 54
+        }
+      ]
+    },
+    {
+      "range_start": 40380,
+      "range_end": 40440,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 57
+        }
+      ]
+    },
+    {
+      "range_start": 40440,
+      "range_end": 40500,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 51
+        }
+      ]
+    },
+    {
+      "range_start": 40500,
+      "range_end": 40560,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 39
+        }
+      ]
+    },
+    {
+      "range_start": 40560,
+      "range_end": 40620,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 26
+        }
+      ]
+    },
+    {
+      "range_start": 40620,
+      "range_end": 40680,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 14
+        }
+      ]
+    },
+    {
+      "range_start": 40680,
+      "range_end": 40740,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 7
+        }
+      ]
+    },
+    {
+      "range_start": 40740,
+      "range_end": 40800,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 3
+        }
+      ]
+    },
+    {
+      "range_start": 40800,
+      "range_end": 40860,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "range_start": 40860,
+      "range_end": 40920,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40920,
+      "range_end": 40980,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 40980,
+      "range_end": 41040,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 41040,
+      "range_end": 41100,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+	{
+      "range_start": 41100,
+      "range_end": 41160,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 41940,
+      "range_end": 42000,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42000,
+      "range_end": 42060,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42060,
+      "range_end": 42120,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42120,
+      "range_end": 42180,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42180,
+      "range_end": 42240,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42240,
+      "range_end": 42300,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42300,
+      "range_end": 42360,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42360,
+      "range_end": 42420,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42420,
+      "range_end": 42480,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 6
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42480,
+      "range_end": 42540,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42540,
+      "range_end": 42600,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 10
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42600,
+      "range_end": 42660,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 12
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42660,
+      "range_end": 42720,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 14
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42720,
+      "range_end": 42780,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 14
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42780,
+      "range_end": 42840,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 17
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42840,
+      "range_end": 42900,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 10
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42900,
+      "range_end": 42960,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 14
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 42960,
+      "range_end": 43020,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 19
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43020,
+      "range_end": 43080,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 17
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43080,
+      "range_end": 43140,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 21
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43140,
+      "range_end": 43200,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 22
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43200,
+      "range_end": 43260,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 37
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43260,
+      "range_end": 43320,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 35
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43320,
+      "range_end": 43380,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 41
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43380,
+      "range_end": 43440,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 44
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43440,
+      "range_end": 43500,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 22
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43500,
+      "range_end": 43560,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 39
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43560,
+      "range_end": 43620,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 23
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43620,
+      "range_end": 43680,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 33
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43680,
+      "range_end": 43740,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 24
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43740,
+      "range_end": 43800,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 31
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43800,
+      "range_end": 43860,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 16
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43860,
+      "range_end": 43920,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 11
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43920,
+      "range_end": 43980,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 14
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 43980,
+      "range_end": 44040,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 22
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44040,
+      "range_end": 44100,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 12
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44100,
+      "range_end": 44160,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 11
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44160,
+      "range_end": 44220,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 13
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44220,
+      "range_end": 44280,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 8
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44280,
+      "range_end": 44340,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 7
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44340,
+      "range_end": 44400,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44400,
+      "range_end": 44460,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44460,
+      "range_end": 44520,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44520,
+      "range_end": 44580,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44580,
+      "range_end": 44640,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44640,
+      "range_end": 44700,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 4
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44700,
+      "range_end": 44760,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44760,
+      "range_end": 44820,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44820,
+      "range_end": 44880,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44880,
+      "range_end": 44940,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 3
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 44940,
+      "range_end": 45000,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45000,
+      "range_end": 45060,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45060,
+      "range_end": 45120,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45120,
+      "range_end": 45180,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45180,
+      "range_end": 45240,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 2
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45240,
+      "range_end": 45300,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 1
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45300,
+      "range_end": 45360,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45360,
+      "range_end": 45420,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45420,
+      "range_end": 45480,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45480,
+      "range_end": 45540,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45540,
+      "range_end": 45600,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45600,
+      "range_end": 45660,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45660,
+      "range_end": 45720,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45720,
+      "range_end": 45780,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45780,
+      "range_end": 45840,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45840,
+      "range_end": 45900,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45900,
+      "range_end": 45960,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 45960,
+      "range_end": 46020,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46020,
+      "range_end": 46080,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46080,
+      "range_end": 46140,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46140,
+      "range_end": 46200,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46200,
+      "range_end": 46260,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46260,
+      "range_end": 46320,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46320,
+      "range_end": 46380,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46380,
+      "range_end": 46440,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46440,
+      "range_end": 46500,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46500,
+      "range_end": 46560,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46560,
+      "range_end": 46620,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46620,
+      "range_end": 46680,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46680,
+      "range_end": 46740,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 7
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46740,
+      "range_end": 46800,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46800,
+      "range_end": 46860,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46860,
+      "range_end": 46920,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46920,
+      "range_end": 46980,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 46980,
+      "range_end": 47040,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47040,
+      "range_end": 47100,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47100,
+      "range_end": 47160,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47160,
+      "range_end": 47220,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47220,
+      "range_end": 47280,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47280,
+      "range_end": 47340,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47340,
+      "range_end": 47400,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47400,
+      "range_end": 47460,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47460,
+      "range_end": 47520,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47520,
+      "range_end": 47580,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47580,
+      "range_end": 47640,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47640,
+      "range_end": 47700,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 15
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47700,
+      "range_end": 47760,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47760,
+      "range_end": 47820,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 7
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47820,
+      "range_end": 47880,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47880,
+      "range_end": 47940,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 47940,
+      "range_end": 48000,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48000,
+      "range_end": 48060,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48060,
+      "range_end": 48120,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48120,
+      "range_end": 48180,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48180,
+      "range_end": 48240,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 20
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48240,
+      "range_end": 48300,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 17
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48300,
+      "range_end": 48360,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 20
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48360,
+      "range_end": 48420,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 20
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48420,
+      "range_end": 48480,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48480,
+      "range_end": 48540,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 19
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48540,
+      "range_end": 48600,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48600,
+      "range_end": 48660,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48660,
+      "range_end": 48720,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 19
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48720,
+      "range_end": 48780,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 21
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48780,
+      "range_end": 48840,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 22
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48840,
+      "range_end": 48900,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 17
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48900,
+      "range_end": 48960,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 34
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 48960,
+      "range_end": 49020,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 25
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49020,
+      "range_end": 49080,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49080,
+      "range_end": 49140,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 24
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49140,
+      "range_end": 49200,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 30
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49200,
+      "range_end": 49260,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 24
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49260,
+      "range_end": 49320,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 17
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49320,
+      "range_end": 49380,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 24
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49380,
+      "range_end": 49440,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 25
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49440,
+      "range_end": 49500,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 29
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49500,
+      "range_end": 49560,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 15
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49560,
+      "range_end": 49620,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 21
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49620,
+      "range_end": 49680,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 25
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49680,
+      "range_end": 49740,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 21
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49740,
+      "range_end": 49800,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 28
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49800,
+      "range_end": 49860,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 25
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49860,
+      "range_end": 49920,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 16
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49920,
+      "range_end": 49980,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 24
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 49980,
+      "range_end": 50040,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 15
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50040,
+      "range_end": 50100,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 24
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50100,
+      "range_end": 50160,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50160,
+      "range_end": 50220,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 24
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50220,
+      "range_end": 50280,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50280,
+      "range_end": 50340,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 17
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50340,
+      "range_end": 50400,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 13
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50400,
+      "range_end": 50460,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50460,
+      "range_end": 50520,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 15
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50520,
+      "range_end": 50580,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50580,
+      "range_end": 50640,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 16
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50640,
+      "range_end": 50700,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50700,
+      "range_end": 50760,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50760,
+      "range_end": 50820,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50820,
+      "range_end": 50880,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50880,
+      "range_end": 50940,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 50940,
+      "range_end": 51000,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 11
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51000,
+      "range_end": 51060,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 16
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51060,
+      "range_end": 51120,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51120,
+      "range_end": 51180,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 8
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51180,
+      "range_end": 51240,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51240,
+      "range_end": 51300,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 9
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51300,
+      "range_end": 51360,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 23
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51360,
+      "range_end": 51420,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51420,
+      "range_end": 51480,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 15
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51480,
+      "range_end": 51540,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51540,
+      "range_end": 51600,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 10
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51600,
+      "range_end": 51660,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51660,
+      "range_end": 51720,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51720,
+      "range_end": 51780,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 14
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51780,
+      "range_end": 51840,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51840,
+      "range_end": 51900,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51900,
+      "range_end": 51960,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 51960,
+      "range_end": 52020,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 12
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52020,
+      "range_end": 52080,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52080,
+      "range_end": 52140,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52140,
+      "range_end": 52200,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52200,
+      "range_end": 52260,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 5
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52260,
+      "range_end": 52320,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52320,
+      "range_end": 52380,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52380,
+      "range_end": 52440,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52440,
+      "range_end": 52500,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 6
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52500,
+      "range_end": 52560,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52560,
+      "range_end": 52620,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52620,
+      "range_end": 52680,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52680,
+      "range_end": 52740,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52740,
+      "range_end": 52800,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52800,
+      "range_end": 52860,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52860,
+      "range_end": 52920,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52920,
+      "range_end": 52980,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 52980,
+      "range_end": 53040,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53040,
+      "range_end": 53100,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53100,
+      "range_end": 53160,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53160,
+      "range_end": 53220,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 2
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53220,
+      "range_end": 53280,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53280,
+      "range_end": 53340,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53340,
+      "range_end": 53400,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53400,
+      "range_end": 53460,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53460,
+      "range_end": 53520,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53520,
+      "range_end": 53580,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53580,
+      "range_end": 53640,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 1
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53640,
+      "range_end": 53700,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53700,
+      "range_end": 53760,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53760,
+      "range_end": 53820,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53820,
+      "range_end": 53880,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53880,
+      "range_end": 53940,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 53940,
+      "range_end": 54000,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 54000,
+      "range_end": 54060,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 54060,
+      "range_end": 54120,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 3
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 54120,
+      "range_end": 54180,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 4
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    },
+    {
+      "range_start": 54180,
+      "range_end": 54240,
+      "athlete_counts": [
+        {
+          "race_id": 0,
+          "count": 0
+        },
+        {
+          "race_id": 1,
+          "count": 0
+        },
+        {
+          "race_id": 2,
+          "count": 0
+        }
+      ]
+    }
+  ]
+}

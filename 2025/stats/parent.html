@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahlen, Daten, Fakten</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px 0;
+        background: #ffffff;
+        color: #333;
+        text-align: center;
+    }
+
+    h1.zdf-title {
+        font-size: 36px;
+        font-weight: 800;
+        color: #e2001a;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    p.description {
+        max-width: 700px;
+        margin: 0 auto 40px auto;
+        font-size: 18px;
+        line-height: 1.5;
+        color: #555;
+    }
+
+    .iframe-wrapper {
+        max-width: 900px;
+        margin: 0 auto 40px auto;
+    }
+
+    /* iframe styling */
+    #statsFrame {
+        width: 100%;
+        border: none;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        opacity: 1;
+    }
+
+    footer {
+        margin-top: 40px;
+        font-size: 14px;
+        color: #888;
+    }
+</style>
+
+</head>
+<body>
+
+<p class="description">
+    Interaktive Metriken, Statistiken und Analysen rund um den Adventslauf.
+    Automatisch eingebettet und dynamisch in der Höhe angepasst.
+</p>
+
+<h1 class="zdf-title">ZDF – Zahlen, Daten, Fakten …</h1>
+
+<!-- iframe-resizer PARENT -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"></script>
+
+<div class="iframe-wrapper">
+    <iframe
+        id="statsFrame"
+        src="dev.html"
+        loading="lazy"
+    ></iframe>
+</div>
+
+<footer>
+    Eingebettete Statistik – automatisch in der Höhe angepasst.
+</footer>
+
+<script>
+iFrameResize({
+    log: true,
+    checkOrigin: false,              // ⭐ WICHTIG für GitHub Pages
+    resizeFrom: 'child',
+    heightCalculationMethod: 'max'   // ⭐ GitHub Pages kompatibel
+}, "#statsFrame");
+</script>
+
+</body>
+</html>

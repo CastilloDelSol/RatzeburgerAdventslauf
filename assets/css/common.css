@@ -1,0 +1,27 @@
+[hidden] {
+    display: none !important;
+}
+
+.load-error {
+    padding: 12px;
+    color: #7c2020;
+    background: #fff0f0;
+    border: 1px solid #e3b6b6;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.map-error {
+    position: fixed;
+    top: 70px;
+    left: 20px;
+    right: 20px;
+    z-index: 9903;
+}
+
+.availability-note {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}

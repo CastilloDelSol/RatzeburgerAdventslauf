@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+
+<!-- ################ BEGIN STATISTIK EINBETTUNG <head> ################ --> 
+<!-- Mobile Darstellung korrigieren -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- iframe-resizer Bibliothek -->  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"></script>
+<!-- ################ ENDE STATISTIK EINBETTUNG <head> ################ --> 
+
+<title>Zahlen, Daten, Fakten</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px 0;
+        background: #ffffff;
+        color: #333;
+        text-align: center;
+    }
+
+    h1.zdf-title {
+        font-size: 36px;
+        font-weight: 800;
+        color: #e2001a;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    p.description {
+        max-width: 700px;
+        margin: 0 auto 40px auto;
+        font-size: 18px;
+        line-height: 1.5;
+        color: #555;
+    }
+
+    .iframe-wrapper {
+        max-width: 900px;
+        margin: 0 auto 40px auto;
+    }
+
+    /* iframe styling */
+    #statsFrame {
+        width: 100%;
+        border: none;
+        border-radius: 6px;
+        overflow: hidden;
+        box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        opacity: 1;
+    }
+
+    footer {
+        margin-top: 40px;
+        font-size: 14px;
+        color: #888;
+    }
+</style>
+
+</head>
+<body>
+
+<p class="description">
+    Interaktive Metriken, Statistiken und Analysen rund um den Adventslauf.
+    Automatisch eingebettet und dynamisch in der Höhe angepasst.
+</p>
+
+<h1 class="zdf-title">ZDF – Zahlen, Daten, Fakten …</h1>
+
+<!-- ################ BEGIN STATISTIK EINBETTUNG <body> ################ -->
+<div style="width:100%; overflow:hidden; border-radius:6px; margin: 0 auto 40px auto;">
+<!-- iframe mit dynamischer Höhenanpassung (iframe-resizer) -->
+    <iframe
+        id="statsFrame"
+        src="https://castillodelsol.github.io/Adventslauf/2025/stats/dev.html"
+        style="width:100%; border:0;"
+        loading="lazy"
+        scrolling="no"
+        allowfullscreen
+    ></iframe>
+</div>
+<!-- ################ ENDE STATISTIK EINBETTUNG <body> ################ --> 
+
+<footer>
+    Eingebettete Statistik – automatisch in der Höhe angepasst.
+</footer>
+
+<!-- ################ BEGIN STATISTIK EINBETTUNG kurz vor </body> ################ --> 
+<script>
+  iFrameResize({log: true, checkOrigin: false, resizeFrom: 'child', heightCalculationMethod: 'max'}, "#statsFrame");
+</script>
+<!-- ################ ENDE STATISTIK EINBETTUNG kurz vor </body> ################ --> 
+</body>
+</html>

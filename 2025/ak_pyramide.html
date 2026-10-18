@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Pyramidencharts – Einheitliche Höhe</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+.chart-container {
+  width: 900px;    /* oder 100% */
+  margin-bottom: 40px;
+  position: relative;
+}
+</style>
+
+</head>
+
+<body>
+<h2>Kurzstrecke – Pyramidenchart (Chart.js)</h2>
+  <div class="chart-container" id="boxKurz">
+    <canvas id="chartKurz"></canvas>
+  </div>
+  
+  <h2>Hauptlauf – Pyramidenchart (Chart.js)</h2>
+  <div class="chart-container" id="boxHaupt">
+    <canvas id="chartHaupt"></canvas>
+  </div>
+  
+  <h2>Kinderlauf – Pyramidenchart (Chart.js)</h2>
+  <div class="chart-container" id="boxKinder">
+    <canvas id="chartKinder"></canvas>
+  </div>
+
+
+<script>
+async function renderAgePyramid(sectionName, canvasId, containerId) {
+  const resp = await fetch("./age_buckets_by_distance.json");
+  const data = await resp.json();
+  const group = data[sectionName];
+  if (!group) return;
+
+  // fixe Zeilenhöhe pro Altersgruppe
+  const rows = group.length;
+  const rowHeight = 18;
+  const topBottomPadding = 90;
+  const barThicknessPixel = 18;
+
+  // WICHTIG: Container statt Canvas skalieren
+  const box = document.getElementById(containerId);
+  box.style.height = (rows * rowHeight + topBottomPadding) + "px";
+
+  const agegroups = group.map(e => e.AG).reverse();
+  const males     = group.map(e => -e.M).reverse();
+  const females   = group.map(e =>  e.W).reverse();
+
+  let maxValue = Math.max(...males.map(v => Math.abs(v)), ...females);
+  maxValue = Math.ceil(maxValue / 10) * 10;
+
+  new Chart(document.getElementById(canvasId), {
+    type: "bar",
+    data: {
+      labels: agegroups,
+      datasets: [
+        {
+          label: "M",
+          data: males,
+          backgroundColor: "rgba(54, 162, 235, 0.7)",
+          grouped: false,
+          stack: "same",
+          barThickness: barThicknessPixel
+        },
+        {
+          label: "W",
+          data: females,
+          backgroundColor: "rgba(255, 99, 132, 0.7)",
+          grouped: false,
+          stack: "same",
+          barThickness: barThicknessPixel
+        }
+      ]
+    },
+    options: {
+      indexAxis: "y",
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          min: -maxValue,
+          max:  maxValue,
+          ticks: { callback: v => Math.abs(v) }
+        },
+        y: {
+          type: 'category',
+          offset: true,
+          reverse: false,  // Reverse NICHT hier machen!
+        }
+      },
+      plugins: {
+        legend: { display: true },
+        tooltip: {
+          callbacks: {
+            title: () => "",
+            label: ctx => `${ctx.dataset.label}${ctx.label}: ${Math.abs(ctx.raw)}`
+          }
+        }
+      }
+    }
+  });
+}
+
+renderAgePyramid("Kurzstrecke", "chartKurz", "boxKurz");
+renderAgePyramid("Hauptlauf",   "chartHaupt", "boxHaupt");
+renderAgePyramid("Kinderlauf",  "chartKinder","boxKinder");
+
+</script>
+
+</body>
+</html>
