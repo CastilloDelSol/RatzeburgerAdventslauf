@@ -26,7 +26,7 @@ export function getNationalityList() {
 }
 
 export async function loadGeoData() {
-    geoData = await loadJson(document.body.dataset.geoSource || "./data/geo-stats.json");
+    geoData = await loadJson(document.body.dataset.geoSource || "./data/statistics.json");
     return geoData;
 }
 

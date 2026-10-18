@@ -10,7 +10,9 @@ assets/
     stats.js               Start der vorhandenen Statistiken
     stats/                 Diagramme, Tabellen und Datenloader
   img/flags/               Gemeinsame PNGs
+archive/                   Alte Testseiten und ursprüngliche Testdaten
 2025/
+  index.html               Weiterleitung zur Heatmap
   heatmap/
     index.html
     buckets.json
@@ -18,17 +20,32 @@ assets/
     hexagons_r7.geojson
   stats/
     index.html
-    data/*.json
+    data/
+      statistics.json
+      age_buckets_by_distance.json
+      nationality.json
+      hauptlauf_stats.json
+      kurzstrecke_stats.json
+      time_buckets.json
 2026/
+  index.html               Weiterleitung zur Heatmap
   heatmap/                  Gleiche Struktur wie 2025
   stats/
     index.html             Reiter 1–4 aktiv, Ergebnisstatistiken auskommentiert
-    data/                  Statistikdaten für 2026
+    data/
+      statistics.json
+      age_buckets_by_distance.json
+      nationality.json
 ```
+
+Ordner und Dateinamen sind für alle Jahre gleich. Zusätzliche Ergebnis- und
+Checkpoint-Dateien sind nur in den Jahren vorhanden, für die diese Daten bereits
+vorliegen. Die alten 2025er Teststände sind unter `archive/2025/` erhalten.
 
 ## Ein neues Jahr anlegen
 
-1. Die Ordner `heatmap` und `stats` eines vorhandenen Jahres nach `YYYY/` kopieren.
+1. Die Ordner `heatmap` und `stats` sowie die Weiterleitung `index.html` eines
+   vorhandenen Jahres nach `YYYY/` kopieren.
 2. JSON- und GeoJSON-Dateien durch die Daten des neuen Jahres ersetzen. Dateinamen
    und Feldstruktur beibehalten. Alte Jahresdaten nicht als neue Daten veröffentlichen.
 3. In den beiden `index.html` Titel, Copyright, Ergebnislinks und gegebenenfalls
@@ -50,13 +67,13 @@ Die Statistikbereiche benötigen folgende Dateien in `YYYY/stats/data/`:
 | --- | --- |
 | Teilnehmer & Läufe, Altersstruktur | `age_buckets_by_distance.json` |
 | Nationalität | `nationality.json` |
-| Herkunftstabelle, Anreise & Herkunft | `geo-stats.json` (Standard), `statistics.json` für 2026 |
+| Herkunftstabelle, Anreise & Herkunft | `statistics.json` |
 | Rennstatus, Top 6, Zeiten-Histogramme, Altersklassen | `hauptlauf_stats.json`, `kurzstrecke_stats.json` |
 
 Die Herkunftstabelle steht im Reiter „Nationalität“, verwendet aber die Geodaten.
-Der Dateipfad kann pro Jahr am `<body>` festgelegt werden, für 2026 zum Beispiel
+Der Dateipfad kann pro Jahr am `<body>` festgelegt werden, zum Beispiel
 `data-geo-source="./data/statistics.json"`. Ohne Angabe wird weiterhin
-`./data/geo-stats.json` geladen.
+`./data/statistics.json` geladen. Dies gilt einheitlich für 2025 und 2026.
 `time_buckets.json` wird nur von den zusätzlichen Checkpoint-Auswertungen der
 Testseite verwendet.
 
@@ -125,7 +142,7 @@ verwendet. Entsprechend gibt es `data-metric-select` und
 ```
 
 Ein zusätzliches Diagramm darf denselben Selektor verwenden; jede Canvas hat ihre
-eigene Chart-Instanz. Für Kennzahlen aus `geo-stats.json`:
+eigene Chart-Instanz. Für Kennzahlen aus `statistics.json`:
 
 ```html
 <div class="geo-kpi-value"
@@ -215,7 +232,7 @@ automatisch gefunden; alternativ über `$env:BROWSER_PATH` den Browserpfad setze
 Für Chart.js und Leaflet wird Internetzugriff auf deren bisherige CDNs benötigt.
 
 Sie vergleicht die Diagrammdaten von 2025 mit `HEAD` und prüft beide Jahresseiten,
-die Testseite, freie Diagramm-IDs, zusätzliche Diagramme, fehlende Bereiche und
+die archivierte Testseite, freie Diagramm-IDs, zusätzliche Diagramme, fehlende Bereiche und
 Daten sowie schnelle Dropdown-Wechsel. Die Glättungslinien werden mit Toleranz
 für Gleitkomma-Rundung verglichen. JSON- und GeoJSON-Dateien werden dabei nicht
 verändert.
@@ -227,10 +244,10 @@ denselben Webserver hochladen. Relative Pfade funktionieren auch unter einem
 Unterverzeichnis, etwa auf GitHub Pages. Die Seiten über HTTP(S) öffnen;
 `file://` unterstützt das Laden der Module und JSON-Daten nicht zuverlässig.
 
-`2025/index.html` leitet für bisherige Links auf `2025/heatmap/index.html` weiter.
-Andere HTML-Dateien sind Testseiten. Deren bestehende Importe wurden, soweit von
-der Verschiebung betroffen, auf den gemeinsamen Ordner umgestellt. Die produktiven
-Seiten enthalten ausschließlich den Funktionsumfang der bisherigen `index.html`.
+`YYYY/index.html` leitet auf `YYYY/heatmap/index.html` weiter. Testseiten und ihre
+alten Datenstände liegen unter `archive/2025/`; dort sind auch ihre Daten- und
+Modulverweise dokumentiert. Für die produktiven Seiten werden nur `assets/` und
+die gewünschten Jahresordner benötigt.
 
 Änderungen an `assets/` wirken auf alle Jahre. Vor der Veröffentlichung deshalb
 Karte und Statistik auch mit älteren Jahresdaten prüfen. Browser-Caches können

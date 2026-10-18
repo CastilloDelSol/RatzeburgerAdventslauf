@@ -35,7 +35,7 @@ const server = http.createServer((req, res) => {
     const target = path.resolve(root, relative);
     const referer = req.headers.referer || '';
     requests.push(url.pathname);
-    if (!target.startsWith(root + path.sep) || (relative.endsWith('geo-stats.json') && referer.includes('fail=geo'))) {
+    if (!target.startsWith(root + path.sep) || (/(?:geo-stats|statistics)\.json$/.test(relative) && referer.includes('fail=geo'))) {
         res.writeHead(404); res.end('Not found'); return;
     }
     let data;
@@ -193,7 +193,7 @@ const deadline = setTimeout(() => {
     console.log('PASS: missing geo data affects only its seven views; other 14 charts render');
 
     const html2026 = fs.readFileSync(path.join(root, '2026/stats/index.html'), 'utf8');
-    const geoSource2026 = html2026.match(/data-geo-source="([^"]+)"/)?.[1] || './data/geo-stats.json';
+    const geoSource2026 = html2026.match(/data-geo-source="([^"]+)"/)?.[1] || './data/statistics.json';
     const geoPath2026 = path.resolve(root, '2026/stats', geoSource2026);
     const hasGeo2026 = fs.existsSync(geoPath2026);
     const nationalities2026 = JSON.parse(fs.readFileSync(path.join(root, '2026/stats/data/nationality.json'), 'utf8'));
@@ -212,22 +212,23 @@ const deadline = setTimeout(() => {
     }
     console.log('PASS: 2026 uses only its own three data files and the first four tabs');
 
-    await open('2025/stats/dev.html', chartCount(17));
+    await open('archive/2025/stats/dev.html', chartCount(17));
     for (const value of ['rothenhusen', 'finish', 'start']) {
         await evaluate(`document.getElementById('checkpointSelect').value='${value}'; document.getElementById('checkpointSelect').dispatchEvent(new Event('change'))`);
         await delay(150);
         assert.equal(await evaluate('Object.keys(Chart.instances).length'), 17);
         assert.equal(errors.length, 0, JSON.stringify(errors));
     }
-    console.log('PASS: legacy test page and all checkpoint dropdowns use the shared lifecycle');
+    console.log('PASS: archived test page and all checkpoint dropdowns use the shared lifecycle');
 
     for (const year of ['2025', '2026']) {
         await open(`${year}/heatmap/index.html`, 'document.querySelector("#btnRes")?.disabled === false');
         assert.equal(await evaluate('document.getElementById("btnRes").click(); document.querySelector(".leaflet-hex7-pane").style.opacity'), '1');
         assert.equal(await evaluate('document.querySelector("[data-privacy-open]").click(); document.getElementById("privacyBox").style.display'), 'block');
         assert.equal(await evaluate('document.querySelector("[data-privacy-close]").click(); document.getElementById("privacyBox").style.display'), 'none');
+        await open(`${year}/index.html`, `location.pathname.endsWith('/${year}/heatmap/index.html') && document.querySelector('#btnRes')?.disabled === false`);
     }
-    console.log('PASS: both heatmaps and privacy popups remain functional');
+    console.log('PASS: both heatmaps, yearly redirects and privacy popups remain functional');
     console.log('Screenshot: ' + path.join(profile, 'stats-2025.png'));
 })().catch(error => { console.error(error); process.exitCode = 1; }).finally(() => {
     clearTimeout(deadline); socket?.close(); browser?.kill(); server.close();

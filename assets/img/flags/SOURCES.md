@@ -9,7 +9,7 @@
 - Lizenzangabe auf der Quelldatei: Public domain (PD-self).
 - Heruntergeladen am 18. Oktober 2026.
 
-Für unbekannte Bundesländer in `geo-stats.json` zum Beispiel
+Für unbekannte Bundesländer in `statistics.json` zum Beispiel
 `"[XX] Unbekannt": 15` unter `bundesland_buckets` verwenden. `XX` ist hier ein
 interner Platzhalter. Der vorhandene Tabellenrenderer lädt dafür `deu/xx.png`.
 Die tatsächliche Anzahl aus dem jeweiligen Datenexport übernehmen.
