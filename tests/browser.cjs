@@ -192,7 +192,10 @@ const deadline = setTimeout(() => {
     assert.equal(await evaluate('document.querySelectorAll(".load-error").length'), 7);
     console.log('PASS: missing geo data affects only its seven views; other 14 charts render');
 
-    const hasGeo2026 = fs.existsSync(path.join(root, '2026/stats/data/geo-stats.json'));
+    const html2026 = fs.readFileSync(path.join(root, '2026/stats/index.html'), 'utf8');
+    const geoSource2026 = html2026.match(/data-geo-source="([^"]+)"/)?.[1] || './data/geo-stats.json';
+    const geoPath2026 = path.resolve(root, '2026/stats', geoSource2026);
+    const hasGeo2026 = fs.existsSync(geoPath2026);
     const nationalities2026 = JSON.parse(fs.readFileSync(path.join(root, '2026/stats/data/nationality.json'), 'utf8'));
     loaded = await open('2026/stats/index.html', `${chartCount(hasGeo2026 ? 8 : 6)} && ${idle}`);
     assert(!loaded.some(file => /_stats\.json$/.test(file)));
@@ -200,6 +203,13 @@ const deadline = setTimeout(() => {
     assert.equal(await evaluate('document.querySelectorAll(".tab-buttons label:not([hidden])").length'), 4);
     assert.equal(await evaluate('document.querySelectorAll("#nationalityTable tbody tr").length'), nationalities2026.length);
     assert.equal(await evaluate('[...document.querySelectorAll("#nationalityTable td.count")].reduce((sum,cell)=>sum+Number(cell.textContent.replaceAll(".","")),0)'), nationalities2026.reduce((sum, entry) => sum + entry.count, 0));
+    if (hasGeo2026) {
+        const geo2026 = JSON.parse(fs.readFileSync(geoPath2026, 'utf8'));
+        assert.equal(await evaluate('document.querySelectorAll(".load-error").length'), 0);
+        assert.equal(await evaluate('[...document.querySelectorAll("#federalStateTable td.count")].reduce((sum,cell)=>sum+Number(cell.textContent.replaceAll(".","")),0)'), geo2026.total_participants);
+        assert.equal(await evaluate('[...document.querySelectorAll("#federalStateTable img")].every(img=>img.complete && img.naturalWidth > 0)'), true);
+        assert.equal(loaded.filter(file => file.endsWith('.json')).length, 3);
+    }
     console.log('PASS: 2026 uses only its own three data files and the first four tabs');
 
     await open('2025/stats/dev.html', chartCount(17));

@@ -22,19 +22,8 @@ export async function renderFederalStateTable(target = "federalStateTable") {
 // ======================================================================
 //  INTERNAL BUILDER – Creates rows dynamically
 // ======================================================================
-function buildFederalStateTable(geo, table) {
-
+export function federalStateRows(geo) {
     const bundeslaender = geo.bundesland_buckets;
-
-    // Ensure <tbody> exists
-    let tbody = table.querySelector("tbody");
-    if (!tbody) {
-        tbody = document.createElement("tbody");
-        table.appendChild(tbody);
-    }
-
-    tbody.innerHTML = ""; // reset content
-
     const list = [];
 
     // --------------------------------------------------
@@ -66,16 +55,29 @@ function buildFederalStateTable(geo, table) {
     // --------------------------------------------------
     //  Add last row "Ausland"
     // --------------------------------------------------
-    const internationalCount = Object.entries(geo.land_buckets)
-    .filter(([country]) => country !== "Deutschland")
-    .reduce((sum, [, count]) => sum + count, 0);
+    const internationalCount = Number.isFinite(geo.international_participants)
+        ? geo.international_participants
+        : geo.land_buckets ? Object.entries(geo.land_buckets)
+            .filter(([country]) => country !== "Deutschland")
+            .reduce((sum, [, count]) => sum + count, 0) : null;
 
-    list.push({
+    if (internationalCount !== null) list.push({
         code: "intl",
         name: "Ausland",
         count: internationalCount,
         flag: new URL("../../img/flags/world/int.png", import.meta.url).href
     });
+    return list;
+}
+
+function buildFederalStateTable(geo, table) {
+    const list = federalStateRows(geo);
+    let tbody = table.querySelector("tbody");
+    if (!tbody) {
+        tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+    }
+    tbody.innerHTML = "";
 
     // --------------------------------------------------
     //  Render rows

@@ -50,10 +50,13 @@ Die Statistikbereiche benötigen folgende Dateien in `YYYY/stats/data/`:
 | --- | --- |
 | Teilnehmer & Läufe, Altersstruktur | `age_buckets_by_distance.json` |
 | Nationalität | `nationality.json` |
-| Herkunftstabelle, Anreise & Herkunft | `geo-stats.json` |
+| Herkunftstabelle, Anreise & Herkunft | `geo-stats.json` (Standard), `statistics.json` für 2026 |
 | Rennstatus, Top 6, Zeiten-Histogramme, Altersklassen | `hauptlauf_stats.json`, `kurzstrecke_stats.json` |
 
 Die Herkunftstabelle steht im Reiter „Nationalität“, verwendet aber die Geodaten.
+Der Dateipfad kann pro Jahr am `<body>` festgelegt werden, für 2026 zum Beispiel
+`data-geo-source="./data/statistics.json"`. Ohne Angabe wird weiterhin
+`./data/geo-stats.json` geladen.
 `time_buckets.json` wird nur von den zusätzlichen Checkpoint-Auswertungen der
 Testseite verwendet.
 
@@ -147,12 +150,55 @@ Unter `assets/js/stats/` werden folgende Funktionen zentral gepflegt:
   `startHistogram.js`, `rothenhusenHistogram.js` und `finishHistogram.js` erhalten
   die bisherigen Einstiegspunkte für die Testseite.
 
+## Geostatistik aus einer verarbeiteten CSV erzeugen
+
+Vom Projektverzeichnis aus:
+
+```powershell
+node scripts/build-statistics.cjs "..\AddressToHexagonMap\processed_data\adventslauf_2026.csv" "2026/stats/data/statistics.json"
+```
+
+Der Import liest die verarbeitete CSV mit den Spalten `origin`, `country`,
+`federal_state_germany`, `lat`, `lon` und `status`. Er erzeugt ausschließlich
+aggregierte Daten. Straßen, individuelle Koordinaten und Suchadressen werden
+nicht in die JSON-Datei übernommen. Quell-Dateiname und SHA-256-Prüfsumme halten
+fest, aus welcher CSV der Export erzeugt wurde.
+
+Die Luftlinie wird aus gültigen Koordinaten mit Status `OK` zum Marktplatz
+Ratzeburg (53.699283, 10.774161) neu berechnet. Die vorhandene `distance`-Spalte
+wird ignoriert, da ihre Dezimaldarstellung im vorliegenden Export uneinheitlich
+ist. Ausgeschlossen werden fehlende oder ungültige Koordinaten; sie werden nicht
+als 0 km gerechnet. `total_participants`, `distance_participants` und
+`distance_missing` machen den Umfang der Berechnung sichtbar.
+
+Die Datei enthält Minimum, Maximum, Mittelwert, Median, Perzentile von 0 bis
+100, Entfernungsgruppen, Histogramm und Bundesland-Anzahlen. Entfernungen werden
+erst bei der Ausgabe auf zwei Nachkommastellen gerundet. Perzentile verwenden
+lineare Interpolation, Histogramm-Intervalle schließen die untere Grenze ein und
+die obere aus; die letzte obere Grenze ist eingeschlossen.
+
+Fehlende Bundesländer werden bei eindeutigen Stadtstaat-Namen in `origin`
+ergänzt, einschließlich einer vorangestellten PLZ. Diese Ergänzung erfordert
+Status `OK`. PLZ ohne Ortsnamen werden nicht geraten. Übrige Fälle erscheinen
+unter `[XX] Nicht zuordenbar` mit der Fragezeichen-Flagge. `metadata` weist die
+Anzahl der Ergänzungen und die noch nicht zugeordneten geocodierten Einträge aus.
+
+`international_participants` enthält nur die Gesamtzahl ausländischer
+Meldeadressen. Der Tabellenrenderer unterstützt diese Zahl und für ältere Jahre
+weiterhin `land_buckets`. Die neue Datei benötigt keine Länder-, Kreis-,
+Windrichtungs- oder Top-Hexagon-Auswertung. Nationalität und Meldeadresse sind
+unterschiedliche Merkmale und werden getrennt gezählt.
+
+Der CSV-Stand für diesen Export enthält 3.026 Einträge; die vorhandene
+Nationalitätstabelle von 2026 enthält dagegen 3.031. Diese Datenstände werden
+nicht künstlich angeglichen.
+
 ## Prüfungen
 
 Mit Node.js 22 oder neuer (hier mit Node.js 24 geprüft):
 
 ```powershell
-node --test tests/stats.test.mjs
+node --test tests/stats.test.mjs tests/statistics.test.mjs
 node tests/browser.cjs
 ```
 
