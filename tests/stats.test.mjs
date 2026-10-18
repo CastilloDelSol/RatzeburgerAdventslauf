@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { formatNumber, formatPercent, formatTime, formatCheckpointTime } from "../assets/js/stats/format.js";
+import { formatNumber, formatPercent, formatDistance, formatTime, formatCheckpointTime } from "../assets/js/stats/format.js";
 import { computeKDE, scaleKDE } from "../assets/js/stats/kde.js";
 import { buildRaceSeries } from "../assets/js/stats/checkpointHistograms.js";
 import { replaceChart, destroyChart } from "../assets/js/stats/chartLifecycle.js";
@@ -10,6 +10,10 @@ test("German number and percentage formatting handles empty totals", () => {
     assert.equal(formatNumber(7.5, 1), "7,5");
     assert.equal(formatPercent(1, 3), "33,3%");
     assert.equal(formatPercent(0, 0), "0,0%");
+    assert.equal(formatDistance(0.027), "27 m");
+    assert.equal(formatDistance(0.09), "90 m");
+    assert.equal(formatDistance(1), "1,0 km");
+    assert.equal(formatDistance(1.25), "1,3 km");
 });
 
 test("time formatting preserves hours and truncates seconds at boundaries", () => {

@@ -9,6 +9,12 @@ export function formatPercent(value, total) {
     return formatNumber(total > 0 ? value / total * 100 : 0, 1) + "%";
 }
 
+export function formatDistance(kilometers, digits = 1) {
+    return kilometers < 1
+        ? formatNumber(kilometers * 1000) + " m"
+        : formatNumber(kilometers, digits) + " km";
+}
+
 // Durations and seconds since midnight use the same numeric representation.
 export function formatTime(value, { showSeconds = true, padHours = true } = {}) {
     if (value == null || !Number.isFinite(value)) return "";

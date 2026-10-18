@@ -39,7 +39,7 @@ test("aggregate recomputes distances, separates unknown states and does not zero
     assert.equal(stats.bundesland_buckets['[HH] Hamburg'], 1);
     assert.equal(stats.bundesland_buckets['[BE] Berlin'], 1);
     assert.equal(stats.bundesland_buckets['[SH] Schleswig-Holstein'], 1);
-    assert.equal(stats.bundesland_buckets['[XX] Nicht zuordenbar'], 2);
+    assert.equal(stats.bundesland_buckets['[XX] Unbekannt'], 2);
     assert.equal(stats.international_participants, 1);
     assert.equal(stats.metadata.federal_states_from_city, 2);
     assert.equal(stats.metadata.unassigned_states_with_coordinates, 1);
@@ -67,12 +67,15 @@ test("percentiles use linear interpolation and stay defined for one valid addres
 });
 
 test("federal-state table supports compact statistics and the legacy country buckets", () => {
-    const compact = federalStateRows({ bundesland_buckets: { '[XX] Nicht zuordenbar': 3 }, international_participants: 2 });
-    assert.equal(compact[0].name, 'Nicht zuordenbar');
-    assert(compact[0].flag.endsWith('/deu/xx.png'));
-    assert.equal(compact[1].name, 'Ausland');
-    assert.equal(compact[1].count, 2);
+    const compact = federalStateRows({ bundesland_buckets: {
+        '[XX] Unbekannt': 30, '[SH] Schleswig-Holstein': 4, '[HH] Hamburg': 7
+    }, international_participants: 2 });
+    assert.deepEqual(compact.map(row => row.name), ['Hamburg', 'Schleswig-Holstein', 'Ausland', 'Unbekannt']);
+    assert(compact.at(-1).flag.endsWith('/deu/xx.png'));
+    assert.equal(compact.at(-1).count, 30);
+    assert.equal(compact[2].count, 2);
     const legacy = federalStateRows({ bundesland_buckets: { '[SH] Schleswig-Holstein': 4 }, land_buckets: { Deutschland: 4, Dänemark: 1 } });
     assert.equal(legacy.at(-1).count, 1);
+    assert.equal(federalStateRows({ bundesland_buckets: { '[XX] Nicht zuordenbar': 3 } }).at(-1).name, 'Unbekannt');
     assert.equal(federalStateRows({ bundesland_buckets: {} }).length, 0);
 });

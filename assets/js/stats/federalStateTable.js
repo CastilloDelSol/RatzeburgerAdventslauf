@@ -25,6 +25,8 @@ export async function renderFederalStateTable(target = "federalStateTable") {
 export function federalStateRows(geo) {
     const bundeslaender = geo.bundesland_buckets;
     const list = [];
+    let unknownCount = 0;
+    let hasUnknown = false;
 
     // --------------------------------------------------
     //  Convert object → array entries with parsed names
@@ -38,6 +40,12 @@ export function federalStateRows(geo) {
         // extract country code like "[SH]"
         const codeMatch = rawName.match(/^\[([A-Z]{2})\]/);
         const code = codeMatch ? codeMatch[1].toLowerCase() : "xx";
+
+        if (code === "xx") {
+            unknownCount += count;
+            hasUnknown = true;
+            continue;
+        }
 
         list.push({
             code,
@@ -53,7 +61,7 @@ export function federalStateRows(geo) {
     list.sort((a, b) => b.count - a.count);
 
     // --------------------------------------------------
-    //  Add last row "Ausland"
+    //  Summary categories follow the sorted federal states.
     // --------------------------------------------------
     const internationalCount = Number.isFinite(geo.international_participants)
         ? geo.international_participants
@@ -66,6 +74,12 @@ export function federalStateRows(geo) {
         name: "Ausland",
         count: internationalCount,
         flag: new URL("../../img/flags/world/int.png", import.meta.url).href
+    });
+    if (hasUnknown) list.push({
+        code: "xx",
+        name: "Unbekannt",
+        count: unknownCount,
+        flag: new URL("../../img/flags/deu/xx.png", import.meta.url).href
     });
     return list;
 }

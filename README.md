@@ -132,6 +132,10 @@ eigene Chart-Instanz. Für Kennzahlen aus `geo-stats.json`:
      data-stat="distance_avg_km" data-digits="1" data-unit="km"></div>
 ```
 
+Mit `data-format="distance"` wird eine Entfernung unter 1 km automatisch in
+ganzen Metern angezeigt; ab 1 km gelten Kilometer mit `data-digits`
+Nachkommastellen. Beide Jahresseiten nutzen dies für die minimale Entfernung.
+
 Die vorhandenen Layout-Container und CSS-Klassen bleiben erforderlich. Die
 HTML-Attribute legen fest, welche Auswertung innerhalb eines Containers erscheint.
 Die bisherigen direkten JavaScript-Aufrufe der Testseite bleiben nutzbar.
@@ -173,14 +177,17 @@ als 0 km gerechnet. `total_participants`, `distance_participants` und
 
 Die Datei enthält Minimum, Maximum, Mittelwert, Median, Perzentile von 0 bis
 100, Entfernungsgruppen, Histogramm und Bundesland-Anzahlen. Entfernungen werden
-erst bei der Ausgabe auf zwei Nachkommastellen gerundet. Perzentile verwenden
+erst bei der Ausgabe gerundet: das Minimum auf drei Nachkommastellen
+(metergenau), die übrigen Kennzahlen auf zwei. Perzentile verwenden
 lineare Interpolation, Histogramm-Intervalle schließen die untere Grenze ein und
 die obere aus; die letzte obere Grenze ist eingeschlossen.
 
 Fehlende Bundesländer werden bei eindeutigen Stadtstaat-Namen in `origin`
 ergänzt, einschließlich einer vorangestellten PLZ. Diese Ergänzung erfordert
 Status `OK`. PLZ ohne Ortsnamen werden nicht geraten. Übrige Fälle erscheinen
-unter `[XX] Nicht zuordenbar` mit der Fragezeichen-Flagge. `metadata` weist die
+unter `[XX] Unbekannt` mit der Fragezeichen-Flagge. Die Bundesländer sind nach
+Anzahl sortiert; danach folgen „Ausland“ und zuletzt „Unbekannt“, jeweils außerhalb
+der Sortierung. `metadata` weist die
 Anzahl der Ergänzungen und die noch nicht zugeordneten geocodierten Einträge aus.
 
 `international_participants` enthält nur die Gesamtzahl ausländischer

@@ -12,7 +12,7 @@ import { renderDeficitChart } from "./stats/deficitLineChart.js";
 import { renderRaceHistogram } from "./stats/raceHistogram.js";
 import { renderAKChart } from "./stats/akBarChart.js";
 import { renderCheckpointHistogram } from "./stats/checkpointHistograms.js";
-import { formatNumber } from "./stats/format.js";
+import { formatNumber, formatDistance } from "./stats/format.js";
 
 // A value can be fixed on the view or supplied by a dropdown in the year's HTML.
 function selection(target, name) {
@@ -57,6 +57,10 @@ async function renderView(target) {
         const data = await loadGeoData();
         const value = data[target.dataset.stat];
         if (!Number.isFinite(value)) throw new Error("Missing numeric statistic: " + target.dataset.stat);
+        if (target.dataset.format === "distance") {
+            target.textContent = formatDistance(value, integer(target, "digits", 1));
+            return;
+        }
         const unit = target.dataset.unit ? ` ${target.dataset.unit}` : "";
         target.textContent = formatNumber(value, integer(target, "digits", 0)) + unit;
         return;

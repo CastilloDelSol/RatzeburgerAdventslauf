@@ -129,7 +129,7 @@ function aggregate(rows) {
         total_participants: rows.length,
         distance_participants: distances.length,
         distance_missing: rows.length - distances.length,
-        distance_min_km: round(distances[0]),
+        distance_min_km: Number(distances[0].toFixed(3)),
         distance_max_km: round(distances.at(-1)),
         distance_avg_km: round(distances.reduce((sum, value) => sum + value, 0) / distances.length),
         distance_median_km: round(percentile(distances, 50)),
@@ -138,7 +138,7 @@ function aggregate(rows) {
         distance_histogram: distanceHistogram(distances),
         bundesland_buckets: {
             ...Object.fromEntries(Object.entries(STATES).map(([code, name]) => [`[${code}] ${name}`, counts[code]])),
-            '[XX] Nicht zuordenbar': unknown
+            '[XX] Unbekannt': unknown
         },
         international_participants: international,
         metadata: {
@@ -147,7 +147,7 @@ function aggregate(rows) {
             earth_radius_km: EARTH_RADIUS_KM,
             distance_inclusion: 'Status OK und gültige Koordinaten; fehlende Werte werden nicht als 0 km gezählt',
             percentile_method: 'Lineare Interpolation bei (n - 1) * p / 100',
-            federal_state_method: 'CSV-Bundesland; bei fehlendem Wert eindeutiger Stadtstaat in origin und Status OK; sonst nicht zuordenbar',
+            federal_state_method: 'CSV-Bundesland; bei fehlendem Wert eindeutiger Stadtstaat in origin und Status OK; sonst unbekannt',
             federal_states_from_city: derivedStates,
             unassigned_states_with_coordinates: unknownWithCoordinates,
             status_counts: statusCounts
@@ -166,7 +166,7 @@ if (require.main === module) {
     fs.writeFileSync(output, JSON.stringify(stats, null, 2) + '\n', 'utf8');
     console.log(JSON.stringify({ file: output, total: stats.total_participants,
         distances: stats.distance_participants, missing_distances: stats.distance_missing,
-        unassigned_states: stats.bundesland_buckets['[XX] Nicht zuordenbar'],
+        unassigned_states: stats.bundesland_buckets['[XX] Unbekannt'],
         international: stats.international_participants, min_km: stats.distance_min_km,
         max_km: stats.distance_max_km, average_km: stats.distance_avg_km,
         median_km: stats.distance_median_km, derived_states: stats.metadata.federal_states_from_city }, null, 2));

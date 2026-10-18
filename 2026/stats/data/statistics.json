@@ -2,7 +2,7 @@
   "total_participants": 3026,
   "distance_participants": 2994,
   "distance_missing": 32,
-  "distance_min_km": 0.03,
+  "distance_min_km": 0.027,
   "distance_max_km": 1871.18,
   "distance_avg_km": 50.79,
   "distance_median_km": 27.92,
@@ -256,7 +256,7 @@
     "[ST] Sachsen-Anhalt": 0,
     "[SH] Schleswig-Holstein": 1997,
     "[TH] Thüringen": 3,
-    "[XX] Nicht zuordenbar": 43
+    "[XX] Unbekannt": 43
   },
   "international_participants": 9,
   "metadata": {
@@ -269,7 +269,7 @@
     "earth_radius_km": 6371.0088,
     "distance_inclusion": "Status OK und gültige Koordinaten; fehlende Werte werden nicht als 0 km gezählt",
     "percentile_method": "Lineare Interpolation bei (n - 1) * p / 100",
-    "federal_state_method": "CSV-Bundesland; bei fehlendem Wert eindeutiger Stadtstaat in origin und Status OK; sonst nicht zuordenbar",
+    "federal_state_method": "CSV-Bundesland; bei fehlendem Wert eindeutiger Stadtstaat in origin und Status OK; sonst unbekannt",
     "federal_states_from_city": 543,
     "unassigned_states_with_coordinates": 11,
     "status_counts": {
