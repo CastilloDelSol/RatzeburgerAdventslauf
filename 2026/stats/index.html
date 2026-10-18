@@ -53,25 +53,25 @@
       <div class="donut-box">
           <div class="chart-title">Gesamt</div>
           <div class="donut-chart-wrapper">
-              <canvas id="donutTotal"></canvas>
+              <canvas id="donutTotal" data-chart="gender" data-section="TOTAL"></canvas>
           </div>
       </div>
       <div class="donut-box">
         <div class="chart-title">Ratzeburger See - 26km</div>
         <div class="donut-chart-wrapper">
-            <canvas id="donutHaupt"></canvas>
+            <canvas id="donutHaupt" data-chart="gender" data-section="Hauptlauf"></canvas>
         </div>
       </div>
       <div class="donut-box">
         <div class="chart-title">Küchensee - 7,5km</div>
         <div class="donut-chart-wrapper">
-            <canvas id="donutKurz"></canvas>
+            <canvas id="donutKurz" data-chart="gender" data-section="Kurzstrecke"></canvas>
         </div>
       </div>
       <div class="donut-box">
         <div class="chart-title">Kinderlauf - 1,5km</div>
         <div class="donut-chart-wrapper">
-            <canvas id="donutKinder"></canvas>
+            <canvas id="donutKinder" data-chart="gender" data-section="Kinderlauf"></canvas>
         </div>
       </div> 
     </div>
@@ -82,7 +82,7 @@
     <div class="table-grid">
       <div class="table-box">
         <h3 class="chart-title">Nationalität</h3>
-        <table id="nationalityTable" class="flag-table">
+        <table id="nationalityTable" data-table="nationality" class="flag-table">
           <thead>
             <tr>
               <th>Land</th>
@@ -94,7 +94,7 @@
       </div>
       <div class="table-box">
         <h3 class="chart-title">Herkunft (Meldeadresse)</h3>
-        <table id="federalStateTable" class="flag-table">
+        <table id="federalStateTable" data-table="federal-states" class="flag-table">
           <thead>
             <tr>
               <th>Bundesland</th>
@@ -113,13 +113,13 @@
       <div class="pyramid-chart-container">
           <div class="chart-title">Ratzeburger See - 26km</div>
           <div class="pyramid-chart-inner" id="boxHaupt">
-              <canvas id="chartHaupt"></canvas>
+              <canvas id="chartHaupt" data-chart="age-pyramid" data-section="Hauptlauf"></canvas>
           </div>
       </div>
       <div class="pyramid-chart-container">
           <div class="chart-title">Küchensee - 7,5km</div>
           <div class="pyramid-chart-inner" id="boxKurz">
-              <canvas id="chartKurz"></canvas>
+              <canvas id="chartKurz" data-chart="age-pyramid" data-section="Kurzstrecke"></canvas>
           </div>
       </div>
     </div>
@@ -129,19 +129,19 @@
   <div class="tab-content content4">
     <div class="geo-kpi-grid">
         <div class="geo-kpi-box">
-            <div class="geo-kpi-value" id="geoMin"></div>
+            <div class="geo-kpi-value" id="geoMin" data-stat="distance_min_km" data-digits="1" data-unit="km"></div>
             <div class="geo-kpi-label">Minimum</div>
         </div>
         <div class="geo-kpi-box">
-            <div class="geo-kpi-value" id="geoAvg"></div>
+            <div class="geo-kpi-value" id="geoAvg" data-stat="distance_avg_km" data-digits="1" data-unit="km"></div>
             <div class="geo-kpi-label">Durchschnitt</div>
         </div>
         <div class="geo-kpi-box">
-            <div class="geo-kpi-value" id="geoMedian"></div>
+            <div class="geo-kpi-value" id="geoMedian" data-stat="distance_median_km" data-digits="1" data-unit="km"></div>
             <div class="geo-kpi-label">Median</div>
         </div>
         <div class="geo-kpi-box">
-            <div class="geo-kpi-value" id="geoMax"></div>
+            <div class="geo-kpi-value" id="geoMax" data-stat="distance_max_km" data-digits="0" data-unit="km"></div>
             <div class="geo-kpi-label">Maximum</div>
         </div>
     </div>
@@ -149,14 +149,14 @@
     <div class="geo-chart-container">
         <div class="chart-title">Anreise-Entfernung – Perzentile</div>
         <div class="geo-chart-inner">
-            <canvas id="distancePercentile"></canvas>
+            <canvas id="distancePercentile" data-chart="distance-percentile"></canvas>
         </div>
     </div>
     
     <div class="geo-chart-container">
         <div class="chart-title">Anreise-Entfernung – Histogramm</div>
         <div class="geo-chart-inner">
-            <canvas id="distanceHistogram"></canvas>
+            <canvas id="distanceHistogram" data-chart="distance-histogram"></canvas>
         </div>
     </div>
   </div>
@@ -172,14 +172,14 @@
     <div class="donut-box">
       <div class="chart-title">Ratzeburger See – 26km</div>
       <div class="donut-chart-wrapper">
-        <canvas id="donut26k"></canvas>
+        <canvas id="donut26k" data-chart="finish-status" data-race="hauptlauf"></canvas>
       </div>
     </div>
 
     <div class="donut-box">
       <div class="chart-title">Küchensee – 7,5km</div>
       <div class="donut-chart-wrapper">
-        <canvas id="donut7k5"></canvas>
+        <canvas id="donut7k5" data-chart="finish-status" data-race="kurzstrecke"></canvas>
       </div>
     </div>
 
@@ -206,18 +206,18 @@
 	<div class="card">
 	  <h2>Männer Top 6: Splitrückstände</h2>
 	  <div class="chart-box">
-	    <canvas id="deficitChartM"></canvas>
+	    <canvas id="deficitChartM" data-chart="deficit" data-gender="M" data-race-select="top6Select"></canvas>
 	  </div>
-	  <div id="top6TableM"></div>
+	  <div id="top6TableM" data-table="top6" data-gender="M" data-race-select="top6Select"></div>
 	</div>
 	
 	
 	<div class="card">
 	  <h2>Frauen Top 6: Splitrückstände</h2>
 	  <div class="chart-box">
-	    <canvas id="deficitChartW"></canvas>
+	    <canvas id="deficitChartW" data-chart="deficit" data-gender="W" data-race-select="top6Select"></canvas>
 	  </div>
-	  <div id="top6TableW"></div>
+	  <div id="top6TableW" data-table="top6" data-gender="W" data-race-select="top6Select"></div>
 	</div>
 
 
@@ -242,7 +242,7 @@
   <div class="card">
     <h2>Männer – Histogramm</h2>
     <div class="chart-box">
-      <canvas id="histM"></canvas>
+      <canvas id="histM" data-chart="race-histogram" data-gender="M" data-race-select="histSelect"></canvas>
     </div>
   </div>
 
@@ -250,7 +250,7 @@
   <div class="card">
     <h2>Frauen – Histogramm</h2>
     <div class="chart-box">
-      <canvas id="histW"></canvas>
+      <canvas id="histW" data-chart="race-histogram" data-gender="W" data-race-select="histSelect"></canvas>
     </div>
   </div>
 
@@ -293,7 +293,7 @@
     <div class="card">
         <h2>Männer – AK Kennzahlen</h2>
         <div class="chart-box">
-            <canvas id="akBarsM"></canvas>
+            <canvas id="akBarsM" data-chart="age-groups" data-gender="M" data-race-select="akSelect" data-metric-select="resultDataType"></canvas>
         </div>
     </div>
 
@@ -301,7 +301,7 @@
     <div class="card">
         <h2>Frauen – AK Kennzahlen</h2>
         <div class="chart-box">
-            <canvas id="akBarsW"></canvas>
+            <canvas id="akBarsW" data-chart="age-groups" data-gender="W" data-race-select="akSelect" data-metric-select="resultDataType"></canvas>
         </div>
     </div>
 

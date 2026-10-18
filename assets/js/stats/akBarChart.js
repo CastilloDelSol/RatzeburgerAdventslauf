@@ -1,33 +1,8 @@
-// akBarChart.js
+import { loadRaceStats } from "./raceStatsLoader.js";
+import { replaceChart, resolveElement } from "./chartLifecycle.js";
+import { genderColor } from "./chartTheme.js";
+import { formatTime } from "./format.js";
 
-import { loadRaceStats, getRaceStats } from "./raceStatsLoader.js";
-
-let chartM = null;
-let chartW = null;
-
-// ------------------------------------------------------------
-// Format seconds → HH:MM:SS
-// ------------------------------------------------------------
-function secToHMS(sec) {
-    if (sec == null) return "";
-    const h = Math.floor(sec / 3600);
-    const m = Math.floor((sec % 3600) / 60);
-    const s = Math.floor(sec % 60);
-    return `${h.toString().padStart(2,"0")}:${m.toString().padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
-}
-
-// ------------------------------------------------------------
-// Round a time upward to next full 30-minute block
-// e.g. 1:18 → 1:30  /  2:01 → 2:30
-// ------------------------------------------------------------
-function roundUpToNext30min(sec) {
-    const block = 30 * 60; // 1800 sec
-    return Math.ceil(sec / block) * block;
-}
-
-// ------------------------------------------------------------
-// Build a sorted AG list
-// ------------------------------------------------------------
 function sortAgeGroups(statsObj) {
     const keys = Object.keys(statsObj);
 
@@ -55,11 +30,9 @@ function sortAgeGroups(statsObj) {
 // Render one bar chart (M or W)
 // ------------------------------------------------------------
 function renderOne(canvasId, stats, dataKey, gender) {
-    const ctx = document.getElementById(canvasId);
+    const ctx = resolveElement(canvasId);
     if (!ctx) return;
 
-    let chartRef = (gender === "M" ? chartM : chartW);
-    if (chartRef) chartRef.destroy();
 
     const groups = sortAgeGroups(stats);
 
@@ -75,22 +48,11 @@ function renderOne(canvasId, stats, dataKey, gender) {
         }
     });
 
-    // ------------------------------
-    // Compute y-axis range
-    // ------------------------------
-    const maxSec = Math.max(...values);
-    //const yMax = roundUpToNext30min(maxSec);
     const yMin = 0;
+    const barColor = genderColor(gender, 0.75);
+    const borderColor = genderColor(gender);
 
-    const barColor = gender === "M"
-        ? "rgba(54, 162, 235, 0.75)"
-        : "rgba(255, 99, 132, 0.75)";
-
-    const borderColor = gender === "M"
-        ? "rgba(54, 162, 235, 1.0)"
-        : "rgba(255, 99, 132, 1.0)";
-
-    const newChart = new Chart(ctx, {
+    replaceChart(ctx, {
         type: "bar",
         data: {
             labels,
@@ -115,10 +77,9 @@ function renderOne(canvasId, stats, dataKey, gender) {
                 y: {
                     beginAtZero: true,
                     min: yMin,
-                    //max: yMax,
                     title: { display: true, text: "Zielzeit (hh:mm:ss)" },
                     ticks: {
-                        callback: secToHMS
+                        callback: value => formatTime(value)
                     }
                 }
             },
@@ -126,7 +87,7 @@ function renderOne(canvasId, stats, dataKey, gender) {
             plugins: {
                 tooltip: {
                     callbacks: {
-                        label: (ctx) => secToHMS(ctx.raw)
+                        label: (ctx) => formatTime(ctx.raw)
                     }
                 },
                 legend: { display: false }
@@ -134,23 +95,22 @@ function renderOne(canvasId, stats, dataKey, gender) {
         }
     });
 
-    if (gender === "M") chartM = newChart;
-    else chartW = newChart;
 }
 
 // ------------------------------------------------------------
 // Main export
 // ------------------------------------------------------------
+export async function renderAKChart(raceName, gender, typeKey, target) {
+    const canvas = resolveElement(target);
+    if (!canvas) return;
+    const race = await loadRaceStats(raceName);
+    if (!race[gender]?.statistics) throw new Error("Missing age-group statistics for " + gender);
+    renderOne(canvas, race[gender].statistics, typeKey, gender);
+}
+
 export async function renderAKCharts(raceName, typeKey) {
-
-    await loadRaceStats(raceName);
-    const race = getRaceStats(raceName);
-
-    if (!race || !race.M || !race.W) {
-        console.error("Missing race stats:", raceName);
-        return;
-    }
-
-    renderOne("akBarsM", race.M.statistics, typeKey, "M");
-    renderOne("akBarsW", race.W.statistics, typeKey, "W");
+    await Promise.all([
+        renderAKChart(raceName, "M", typeKey, "akBarsM"),
+        renderAKChart(raceName, "W", typeKey, "akBarsW")
+    ]);
 }

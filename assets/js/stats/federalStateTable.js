@@ -1,3 +1,5 @@
+import { resolveElement } from "./chartLifecycle.js";
+import { formatNumber } from "./format.js";
 // federalStateTable.js
 
 import { loadGeoData } from "./dataLoader.js";
@@ -5,29 +7,24 @@ import { loadGeoData } from "./dataLoader.js";
 // ======================================================================
 //  PUBLIC FUNCTION – render full table
 // ======================================================================
-export async function renderFederalStateTable() {
+export async function renderFederalStateTable(target = "federalStateTable") {
+    const table = resolveElement(target);
+    if (!table) return;
     const geo = await loadGeoData();
 
     if (!geo || !geo.bundesland_buckets) {
-        console.error("bundesland_buckets not found in geo data");
-        return;
+        throw new Error("bundesland_buckets not found in geo data");
     }
 
-    buildFederalStateTable(geo);
+    buildFederalStateTable(geo, table);
 }
 
 // ======================================================================
 //  INTERNAL BUILDER – Creates rows dynamically
 // ======================================================================
-function buildFederalStateTable(geo) {
+function buildFederalStateTable(geo, table) {
 
     const bundeslaender = geo.bundesland_buckets;
-
-    const table = document.querySelector("#federalStateTable");
-    if (!table) {
-        console.error("federalStateTable element not found");
-        return;
-    }
 
     // Ensure <tbody> exists
     let tbody = table.querySelector("tbody");
@@ -38,7 +35,6 @@ function buildFederalStateTable(geo) {
 
     tbody.innerHTML = ""; // reset content
 
-    let sumStates = 0;
     const list = [];
 
     // --------------------------------------------------
@@ -46,7 +42,6 @@ function buildFederalStateTable(geo) {
     // --------------------------------------------------
     for (const rawName of Object.keys(bundeslaender)) {
         const count = bundeslaender[rawName];
-        sumStates += count;
 
         // remove "[SH]" prefix
         const cleanedName = rawName.replace(/^\[[A-Z]{2}\]\s*/, "");
@@ -108,7 +103,7 @@ function buildFederalStateTable(geo) {
         row.appendChild(nameSpan);
 
         tdName.appendChild(row);
-        tdCount.textContent = entry.count;
+        tdCount.textContent = formatNumber(entry.count);
 
         tr.appendChild(tdName);
         tr.appendChild(tdCount);

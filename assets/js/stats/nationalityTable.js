@@ -1,3 +1,5 @@
+import { resolveElement } from "./chartLifecycle.js";
+import { formatNumber } from "./format.js";
 // nationalityTable.js
 
 import { loadNationalityData } from "./dataLoader.js";
@@ -5,22 +7,18 @@ import { loadNationalityData } from "./dataLoader.js";
 // ======================================================================
 //  RENDER FULL NATIONALITY TABLE
 // ======================================================================
-export async function renderNationalityTable() {
+export async function renderNationalityTable(target = "nationalityTable") {
+    const table = resolveElement(target);
+    if (!table) return;
     const list = await loadNationalityData();
-    buildNationalityTable(list);
+    buildNationalityTable(list, table);
 }
 
 // ======================================================================
 //  INTERNAL: Builds the table rows
 // ======================================================================
-function buildNationalityTable(list) {
+function buildNationalityTable(list, table) {
     const sorted = [...list].sort((a, b) => b.count - a.count);
-
-    const table = document.querySelector("#nationalityTable");
-    if (!table) {
-        console.error("nationalityTable element not found");
-        return;
-    }
 
     // Ensure <tbody> exists
     let tbody = table.querySelector("tbody");
@@ -54,7 +52,7 @@ function buildNationalityTable(list) {
         wrapper.appendChild(text);
 
         tdLand.appendChild(wrapper);
-        tdCount.textContent = entry.count;
+        tdCount.textContent = formatNumber(entry.count);
 
         tr.appendChild(tdLand);
         tr.appendChild(tdCount);

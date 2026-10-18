@@ -1,8 +1,8 @@
 // deficitLineChart.js
 
-import { loadRaceStats, getRaceStats } from "./raceStatsLoader.js";
-
-const DEFICIT_CHARTS = { M: null, W: null };
+import { loadRaceStats } from "./raceStatsLoader.js";
+import { replaceChart, destroyChart, resolveElement } from "./chartLifecycle.js";
+import { formatNumber } from "./format.js";
 
 // --------------------------------------------------------------
 // Short display name: "S. Müller"
@@ -17,30 +17,31 @@ function shortName(r) {
 // --------------------------------------------------------------
 // MAIN EXPORT
 // --------------------------------------------------------------
+export async function renderDeficitChart(raceName, gender, target, numResults = 6) {
+    const canvas = resolveElement(target);
+    if (!canvas) return;
+    const race = await loadRaceStats(raceName);
+    if (!race.splits || !race[gender]?.Top10) throw new Error("Missing split results for " + gender);
+    renderOne(canvas, race[gender].Top10.slice(0, numResults), race.splits);
+}
+
 export async function renderDeficitCharts(raceName, numResults = 6) {
-    await loadRaceStats(raceName);
-    const race = getRaceStats(raceName);
-    if (!race || !race.splits) return;
-
-    const splits = race.splits;
-    const M = race.M.Top10.slice(0, numResults);
-    const W = race.W.Top10.slice(0, numResults);
-
-    renderOne("#deficitChartM", "M", M, splits);
-    renderOne("#deficitChartW", "W", W, splits);
+    await Promise.all([
+        renderDeficitChart(raceName, "M", "deficitChartM", numResults),
+        renderDeficitChart(raceName, "W", "deficitChartW", numResults)
+    ]);
 }
 
 // --------------------------------------------------------------
 // RENDER ONE CHART
 // --------------------------------------------------------------
-function renderOne(canvasSelector, key, runners, splits) {
+function renderOne(target, runners, splits) {
 
-    const canvas = document.querySelector(canvasSelector);
+    const canvas = resolveElement(target);
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
     if (!runners || runners.length === 0) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        destroyChart(canvas);
         return;
     }
 
@@ -73,13 +74,10 @@ function renderOne(canvasSelector, key, runners, splits) {
         pointHoverRadius: 6
     }));
 
-    // Remove old chart
-    if (DEFICIT_CHARTS[key]) DEFICIT_CHARTS[key].destroy();
-
     // --------------------------------------------------------------
     // NEW CHART
     // --------------------------------------------------------------
-    DEFICIT_CHARTS[key] = new Chart(ctx, {
+    replaceChart(canvas, {
         type: "line",
         data: { datasets },
         options: {
@@ -96,7 +94,7 @@ function renderOne(canvasSelector, key, runners, splits) {
                     },
 
                     ticks: {
-                        callback: v => v.toFixed(1)
+                        callback: v => formatNumber(v, 1)
                     },
 
                     min: 0,
@@ -130,7 +128,7 @@ function renderOne(canvasSelector, key, runners, splits) {
                             return s ? `${s.name} (${p.x} km)` : `${p.x} km`;
                         },
                         label: ctx =>
-                            `${ctx.dataset.label}: ${ctx.raw.y.toFixed(1)} s`
+                            `${ctx.dataset.label}: ${formatNumber(ctx.raw.y, 1)} s`
                     }
                 }
             }

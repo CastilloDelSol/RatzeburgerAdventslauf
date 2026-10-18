@@ -76,6 +76,97 @@ Ergebnisdaten auskommentiert. Zum Aktivieren die drei markierten Kommentare bei
 Radio-Buttons, Menüeinträgen und Ergebnisbereichen entfernen. Es werden keine
 Statistikdaten aus 2025 als Ersatz geladen.
 
+## Auswertungen im HTML konfigurieren
+
+Die Jahres-`index.html` bestimmt über `data-*`-Attribute, welche Auswertungen
+gestartet werden. Neue Elemente mit diesen Attributen werden beim Seitenaufruf
+automatisch erkannt. Die IDs der Diagramme und Tabellen sind frei wählbar; ihre
+Position im HTML bestimmt die Anordnung innerhalb des vorhandenen Layouts.
+
+Beispiel für einen Geschlechter-Donut:
+
+```html
+<div class="donut-box">
+  <div class="chart-title">Hauptlauf</div>
+  <div class="donut-chart-wrapper">
+    <canvas data-chart="gender" data-section="Hauptlauf"></canvas>
+  </div>
+</div>
+```
+
+Unterstützte Diagramme:
+
+| `data-chart` | Weitere Attribute |
+| --- | --- |
+| `gender` | `data-section="TOTAL"`, `"Hauptlauf"`, `"Kurzstrecke"` oder `"Kinderlauf"` |
+| `age-pyramid` | `data-section`; die Höhe wird am umgebenden Element gesetzt |
+| `distance-percentile`, `distance-histogram` | Keine |
+| `finish-status` | `data-race` |
+| `deficit` | `data-race`, `data-gender="M"` oder `"W"`; optional `data-limit` (Standard: 6) |
+| `race-histogram` | `data-race`, `data-gender` |
+| `age-groups` | `data-race`, `data-gender`, `data-metric` (z. B. `winner` oder `median`) |
+| `checkpoint` | `data-checkpoint` (Feldname aus `time_buckets.json`) |
+
+Für Tabellen gelten `data-table="nationality"`, `"federal-states"` oder `"top6"`.
+`top6` benötigt zusätzlich `data-race`, `data-gender` und optional `data-limit`.
+
+Ein Wert kann fest im HTML stehen oder aus einem Dropdown kommen. Statt
+`data-race="hauptlauf"` wird dann `data-race-select="ID-des-Dropdowns"`
+verwendet. Entsprechend gibt es `data-metric-select` und
+`data-checkpoint-select`. Beispiel für die bestehende Streckenauswahl:
+
+```html
+<canvas data-chart="race-histogram"
+        data-gender="M"
+        data-race-select="histSelect"></canvas>
+```
+
+Ein zusätzliches Diagramm darf denselben Selektor verwenden; jede Canvas hat ihre
+eigene Chart-Instanz. Für Kennzahlen aus `geo-stats.json`:
+
+```html
+<div class="geo-kpi-value"
+     data-stat="distance_avg_km" data-digits="1" data-unit="km"></div>
+```
+
+Die vorhandenen Layout-Container und CSS-Klassen bleiben erforderlich. Die
+HTML-Attribute legen fest, welche Auswertung innerhalb eines Containers erscheint.
+Die bisherigen direkten JavaScript-Aufrufe der Testseite bleiben nutzbar.
+
+## Gemeinsame Diagrammhilfen
+
+Unter `assets/js/stats/` werden folgende Funktionen zentral gepflegt:
+
+- `chartTheme.js`: Geschlechter-, Lauf- und Statusfarben.
+- `format.js`: Deutsche Zahlen und Prozente, Zeiten und Checkpoint-Zeitstempel
+  in der Zeitzone der Veranstaltung.
+- `chartLifecycle.js`: Vorhandene Chart-Instanz je Canvas ersetzen oder entfernen.
+- `donutChart.js`: Donut-Darstellung mit gemeinsamem Text und Tooltip.
+- `kde.js`: Glättung und Skalierung der Histogrammlinien, auch bei leeren Daten.
+- `checkpointHistograms.js`: Gemeinsame Checkpoint-Auswertung. Die Dateien
+  `startHistogram.js`, `rothenhusenHistogram.js` und `finishHistogram.js` erhalten
+  die bisherigen Einstiegspunkte für die Testseite.
+
+## Prüfungen
+
+Mit Node.js 22 oder neuer (hier mit Node.js 24 geprüft):
+
+```powershell
+node --test tests/stats.test.mjs
+node tests/browser.cjs
+```
+
+Die Browserprüfung verwendet einen unsichtbaren Chromium-Browser und einen
+temporären HTTP-Server auf localhost. Unter Windows wird Edge oder Chrome
+automatisch gefunden; alternativ über `$env:BROWSER_PATH` den Browserpfad setzen.
+Für Chart.js und Leaflet wird Internetzugriff auf deren bisherige CDNs benötigt.
+
+Sie vergleicht die Diagrammdaten von 2025 mit `HEAD` und prüft beide Jahresseiten,
+die Testseite, freie Diagramm-IDs, zusätzliche Diagramme, fehlende Bereiche und
+Daten sowie schnelle Dropdown-Wechsel. Die Glättungslinien werden mit Toleranz
+für Gleitkomma-Rundung verglichen. JSON- und GeoJSON-Dateien werden dabei nicht
+verändert.
+
 ## Veröffentlichung und Vorschau
 
 Den gemeinsamen Ordner `assets/` und die gewünschten Jahresordner zusammen auf

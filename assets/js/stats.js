@@ -7,100 +7,117 @@ import { loadGeoData } from "./stats/dataLoader.js";
 import { renderDistancePercentile } from "./stats/distancePercentile.js";
 import { renderDistanceHistogram } from "./stats/distanceHistogram.js";
 import { renderFinishStatusDonut } from "./stats/finishStatusDonut.js";
-import { renderTop6Tables } from "./stats/top6Table.js";
-import { renderDeficitCharts } from "./stats/deficitLineChart.js";
-import { renderRaceHistograms } from "./stats/raceHistogram.js";
-import { renderAKCharts } from "./stats/akBarChart.js";
+import { renderTop6Table } from "./stats/top6Table.js";
+import { renderDeficitChart } from "./stats/deficitLineChart.js";
+import { renderRaceHistogram } from "./stats/raceHistogram.js";
+import { renderAKChart } from "./stats/akBarChart.js";
+import { renderCheckpointHistogram } from "./stats/checkpointHistograms.js";
+import { formatNumber } from "./stats/format.js";
 
-const element = id => document.getElementById(id);
+// A value can be fixed on the view or supplied by a dropdown in the year's HTML.
+function selection(target, name) {
+    const selectId = target.dataset[`${name}Select`];
+    const value = selectId ? document.getElementById(selectId)?.value : target.dataset[name];
+    if (!value) throw new Error(`Missing ${name} for ${target.id || target.dataset.chart || target.dataset.table}`);
+    return value;
+}
 
-// Commenting out a panel also disables its menu entry. Select a remaining tab
-// if the previously selected panel was removed from the year's HTML.
+function gender(target) {
+    const value = selection(target, "gender");
+    if (value !== "M" && value !== "W") throw new Error("Unknown gender: " + value);
+    return value;
+}
+
+function integer(target, name, fallback) {
+    const value = Number(target.dataset[name] ?? fallback);
+    if (!Number.isInteger(value) || value < 0) throw new Error(`Invalid ${name}: ${value}`);
+    return value;
+}
+
+const charts = {
+    gender: target => renderGenderDonut(selection(target, "section"), target),
+    "age-pyramid": target => renderAgePyramid(selection(target, "section"), target, target.dataset.container),
+    "distance-percentile": renderDistancePercentile,
+    "distance-histogram": renderDistanceHistogram,
+    "finish-status": target => renderFinishStatusDonut(selection(target, "race"), target),
+    deficit: target => renderDeficitChart(selection(target, "race"), gender(target), target, integer(target, "limit", 6)),
+    "race-histogram": target => renderRaceHistogram(selection(target, "race"), gender(target), target),
+    "age-groups": target => renderAKChart(selection(target, "race"), gender(target), selection(target, "metric"), target),
+    checkpoint: target => renderCheckpointHistogram(target, selection(target, "checkpoint"))
+};
+
+const tables = {
+    nationality: renderNationalityTable,
+    "federal-states": renderFederalStateTable,
+    top6: target => renderTop6Table(selection(target, "race"), gender(target), target, integer(target, "limit", 6))
+};
+
+async function renderView(target) {
+    if (target.dataset.stat) {
+        const data = await loadGeoData();
+        const value = data[target.dataset.stat];
+        if (!Number.isFinite(value)) throw new Error("Missing numeric statistic: " + target.dataset.stat);
+        const unit = target.dataset.unit ? ` ${target.dataset.unit}` : "";
+        target.textContent = formatNumber(value, integer(target, "digits", 0)) + unit;
+        return;
+    }
+    const name = target.dataset.chart || target.dataset.table;
+    const registry = target.dataset.chart ? charts : tables;
+    if (!Object.hasOwn(registry, name)) throw new Error("Unknown statistic view: " + name);
+    await registry[name](target);
+}
+
+// Commenting out a panel also disables its menu entry and selects a remaining tab.
 const availableTabs = [];
 document.querySelectorAll(".tab-buttons label[for]").forEach(label => {
-    const input = element(label.htmlFor);
+    const input = document.getElementById(label.htmlFor);
     const panel = document.querySelector(`.content${label.htmlFor.replace("tab", "")}`);
     label.hidden = !input || !panel;
     if (input) input.disabled = !panel;
     if (input && panel) availableTabs.push(input);
 });
-if (availableTabs.length && !availableTabs.some(input => input.checked)) {
-    availableTabs[0].checked = true;
-}
+if (availableTabs.length && !availableTabs.some(input => input.checked)) availableTabs[0].checked = true;
 
-// Check the HTML before calling any loader. Missing panels never fetch data.
-async function renderIfPresent(ids, render) {
-    const targets = ids.map(element).filter(Boolean);
-    if (!targets.length) return;
-    const containers = new Set(targets.map(target => target.closest(
+// Each declared view owns its loading, error and update state. Updates are
+// serialized per element so a slow response cannot overwrite the last selection.
+document.querySelectorAll("[data-chart], [data-table], [data-stat]").forEach(target => {
+    const container = target.closest(
         ".card, .donut-box, .pyramid-chart-container, .geo-chart-container, .geo-kpi-box, .table-box"
-    ) || target.parentElement));
-    for (const container of containers) {
-        container.querySelectorAll(".load-error").forEach(message => message.remove());
-    }
-    try {
-        await render();
-    } catch (error) {
-        console.error(`Statistik konnte nicht geladen werden (${ids.join(", ")})`, error);
-        for (const container of containers) {
-            if (container.querySelector(".load-error")) continue;
-            const message = document.createElement("p");
-            message.className = "load-error";
-            message.setAttribute("role", "alert");
-            message.textContent = "Für diese Auswertung konnten die Daten nicht geladen werden.";
-            container.append(message);
+    ) || target.parentElement;
+    let running = false;
+    let pending = false;
+    let errorMessage;
+
+    async function update() {
+        pending = true;
+        if (running) return;
+        running = true;
+        try {
+            while (pending && target.isConnected) {
+                pending = false;
+                errorMessage?.remove();
+                target.setAttribute("aria-busy", "true");
+                try {
+                    await renderView(target);
+                } catch (error) {
+                    console.error("Statistik konnte nicht geladen werden", target.dataset, error);
+                    errorMessage = document.createElement("p");
+                    errorMessage.className = "load-error";
+                    errorMessage.setAttribute("role", "alert");
+                    errorMessage.textContent = "Für diese Auswertung konnten die Daten nicht geladen werden.";
+                    container.append(errorMessage);
+                } finally {
+                    target.setAttribute("aria-busy", "false");
+                }
+            }
+        } finally {
+            running = false;
         }
     }
-}
 
-for (const [section, canvas] of [
-    ["TOTAL", "donutTotal"], ["Kurzstrecke", "donutKurz"],
-    ["Hauptlauf", "donutHaupt"], ["Kinderlauf", "donutKinder"]
-]) {
-    renderIfPresent([canvas], () => renderGenderDonut(section, canvas));
-}
-renderIfPresent(["nationalityTable"], renderNationalityTable);
-renderIfPresent(["federalStateTable"], renderFederalStateTable);
-
-for (const [section, canvas, box] of [
-    ["Kurzstrecke", "chartKurz", "boxKurz"],
-    ["Hauptlauf", "chartHaupt", "boxHaupt"]
-]) {
-    if (element(box)) renderIfPresent([canvas], () => renderAgePyramid(section, canvas, box));
-}
-
-renderIfPresent(["geoMin", "geoAvg", "geoMedian", "geoMax"], async () => {
-    const geo = await loadGeoData();
-    for (const [id, key, digits] of [
-        ["geoMin", "distance_min_km", 1], ["geoAvg", "distance_avg_km", 1],
-        ["geoMedian", "distance_median_km", 1], ["geoMax", "distance_max_km", 0]
-    ]) {
-        if (element(id)) element(id).textContent = geo[key].toFixed(digits) + " km";
+    const controls = new Set([target.dataset.raceSelect, target.dataset.metricSelect, target.dataset.checkpointSelect]);
+    for (const id of controls) {
+        if (id) document.getElementById(id)?.addEventListener("change", update);
     }
+    update();
 });
-renderIfPresent(["distancePercentile"], () => renderDistancePercentile("distancePercentile"));
-renderIfPresent(["distanceHistogram"], () => renderDistanceHistogram("distanceHistogram"));
-renderIfPresent(["donut26k"], () => renderFinishStatusDonut("hauptlauf", "donut26k"));
-renderIfPresent(["donut7k5"], () => renderFinishStatusDonut("kurzstrecke", "donut7k5"));
-
-function bindRaceSelect(id, targets, render) {
-    const select = element(id);
-    if (!select) return;
-    const update = () => renderIfPresent(targets, () => render(select.value));
-    select.addEventListener("change", update);
-    update();
-}
-
-bindRaceSelect("top6Select", ["top6TableM", "top6TableW"], renderTop6Tables);
-bindRaceSelect("top6Select", ["deficitChartM", "deficitChartW"], renderDeficitCharts);
-bindRaceSelect("histSelect", ["histM", "histW"], renderRaceHistograms);
-
-const akSelect = element("akSelect");
-const resultDataType = element("resultDataType");
-if (akSelect && resultDataType) {
-    const update = () => renderIfPresent(["akBarsM", "akBarsW"], () =>
-        renderAKCharts(akSelect.value, resultDataType.value));
-    akSelect.addEventListener("change", update);
-    resultDataType.addEventListener("change", update);
-    update();
-}

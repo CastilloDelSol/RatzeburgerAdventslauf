@@ -1,190 +1,53 @@
-// checkpointHistograms.js
-import { gaussianKernel, computeKDE } from "./kde.js";
-import { loadCheckpointData, getCheckpointData } from "./dataLoader.js";
+import { loadCheckpointData } from "./dataLoader.js";
+import { computeKDE, scaleKDE } from "./kde.js";
+import { replaceChart, resolveElement } from "./chartLifecycle.js";
+import { raceColor } from "./chartTheme.js";
+import { formatCheckpointTime } from "./format.js";
 
-/* -------------------------------------------------------
-   Time formatters
-------------------------------------------------------- */
-function secToHM(sec) {
-    const h = Math.floor(sec / 3600);
-    const m = Math.floor((sec % 3600) / 60);
-    return `${h}:${m.toString().padStart(2, "0")}`;
-}
-
-function isUnixTimestamp(val) {
-    return val > 86400;
-}
-
-function formatBucketLabel(start, end) {
-    if (isUnixTimestamp(start)) {
-        const s = new Date(start * 1000);
-        const e = new Date(end * 1000);
-        const pad = x => x.toString().padStart(2, "0");
-        return `${pad(s.getHours())}:${pad(s.getMinutes())}–${pad(e.getHours())}:${pad(e.getMinutes())}`;
-    }
-    return `${secToHM(start)}–${secToHM(end)}`;
-}
-
-/* -------------------------------------------------------
-   PER-CHECKPOINT CONFIG
-------------------------------------------------------- */
-const CHECKPOINT_CONFIG = {
-    start_histogram_buckets: {
-        label: "Start",
-        tickStep: 10,
-        timeFormat: "clock",
-        showRange: false,
-        kde: false,
-        bandwidth: 45
-    },
-    split_rothenhusen_histogram_buckets: {
-        label: "Rothenhusen",
-        tickStep: 1,
-        timeFormat: "clock",
-        showRange: false,
-        kde: true,
-        bandwidth: 45
-    },
-    registration_histogram_buckets: {
-        label: "Anmeldung",
-        tickStep: 1,
-        timeFormat: "clock",
-        showRange: false,
-        kde: false,
-        bandwidth: 60
-    },
-    finish_histogram_buckets: {
-        label: "Ziel",
-        tickStep: 6,
-        timeFormat: "clock",
-        showRange: false,
-        kde: false,
-        bandwidth: 30
-    }
+const checkpoints = {
+    start_histogram_buckets: { tickStep: 15, showSeconds: true, title: "Uhrzeit (hh:mm:ss)" },
+    split_rothenhusen_histogram_buckets: { tickStep: 1, showSeconds: false, range: true, kde: true, title: "Uhrzeit (hh:mm)" },
+    registration_histogram_buckets: { tickStep: 1, showSeconds: true, title: "Uhrzeit (hh:mm:ss)" },
+    finish_histogram_buckets: { tickStep: 15, showSeconds: true, sparseGrid: true, title: "Zeit (hh:mm:ss)" }
 };
 
+// Include races first appearing in later buckets, and handle empty histograms.
+export function buildRaceSeries(buckets, races = []) {
+    const names = new Map(races.map(race => [race.race_id, race.name]));
+    const ids = new Set(buckets.flatMap(bucket => bucket.athlete_counts.map(entry => entry.race_id)));
+    return [...ids].map(raceId => {
+        const counts = buckets.map(bucket => bucket.athlete_counts.find(entry => entry.race_id === raceId)?.count ?? 0);
+        return { counts, label: names.get(raceId) || `Race ${raceId}` };
+    }).filter(series => series.counts.some(count => count > 0));
+}
 
-/* -------------------------------------------------------
-   RENDER stacked histogram for ALL races (filtered)
-------------------------------------------------------- */
-export async function renderCheckpointHistogram(
-    canvasId,
-    checkpointField,
-    displayKde = null          // overrides config if not null
-) {
-    await loadCheckpointData();
-    const data = getCheckpointData();
-
-    const buckets = data[checkpointField];
-    if (!buckets) {
-        console.error("Unknown checkpoint", checkpointField);
-        return;
-    }
-
-    const ctx = document.getElementById(canvasId);
-    if (!ctx) return;
-
-    // Specific config for this checkpoint
-    const cfg = CHECKPOINT_CONFIG[checkpointField];
-
-    /* -------------------------------------------
-       TIME FORMATTER
-    ------------------------------------------- */
-    function unixToClock(u) {
-        const d = new Date(u * 1000);
-        const pad = x => x.toString().padStart(2, "0");
-        return `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-    }
-
-    // Only start time
-    const labels = buckets.map(b => unixToClock(b.range_start));
-
-    /* -------------------------------------------
-       RACE FILTERING
-    ------------------------------------------- */
-    const raceIds = buckets[0].athlete_counts.map(a => a.race_id);
-
-    let raceSeries = raceIds.map(ri => {
-        const counts = buckets.map(b => {
-            const entry = b.athlete_counts.find(a => a.race_id === ri);
-            return entry ? entry.count : 0;
-        });
-        const sum = counts.reduce((a, b) => a + b, 0);
-        return { race_id: ri, counts, sum };
+export async function renderCheckpointHistogram(target, field, displayKde = null) {
+    const canvas = resolveElement(target);
+    if (!canvas) return;
+    if (!Object.hasOwn(checkpoints, field)) throw new Error("Unknown checkpoint: " + field);
+    const cfg = checkpoints[field];
+    const data = await loadCheckpointData();
+    const buckets = data[field];
+    if (!buckets) throw new Error("Missing checkpoint buckets: " + field);
+    const time = value => formatCheckpointTime(value, {
+        showSeconds: cfg.showSeconds, timeZone: data.metadata?.timezone || "Europe/Berlin"
     });
-
-    // Filter out empty races
-    raceSeries = raceSeries.filter(r => r.sum > 0);
-
-    /* -------------------------------------------
-       COLORS
-    ------------------------------------------- */
-    const raceColors = [
-        "rgba(54,162,235,0.75)",
-        "rgba(255,159,64,0.75)",
-        "rgba(153,102,255,0.75)",
-        "rgba(255,205,86,0.75)",
-        "rgba(75,192,192,0.75)"
-    ];
-    const raceColorsSolid = raceColors.map(c =>
-        c.replace("0.75", "1.0")
-    );
-
-    /* -------------------------------------------
-       KDE positions (midpoint of buckets)
-    ------------------------------------------- */
-    const xs = buckets.map(
-        b => (b.range_start + b.range_end) / 2
-    );
-
-    /* -------------------------------------------
-       BAR DATASETS
-    ------------------------------------------- */
-    const datasets = [];
-
-    raceSeries.forEach((r, idx) => {
+    const labels = buckets.map(bucket => cfg.range
+        ? `${time(bucket.range_start)}–${time(bucket.range_end)}` : time(bucket.range_start));
+    const series = buildRaceSeries(buckets, data.metadata?.races);
+    const datasets = series.map((race, index) => ({
+        type: "bar", label: race.label, data: race.counts,
+        backgroundColor: raceColor(index), stack: "stack1"
+    }));
+    if (displayKde ?? cfg.kde) {
+        const xs = buckets.map(bucket => (bucket.range_start + bucket.range_end) / 2);
+        const totals = buckets.map((_, index) => series.reduce((sum, race) => sum + race.counts[index], 0));
         datasets.push({
-            type: "bar",
-            label: `Race ${r.race_id}`,
-            data: r.counts,
-            backgroundColor: raceColors[idx % raceColors.length],
-            stack: "stack1"
-        });
-    });
-
-    /* -------------------------------------------
-       KDE (config or override)
-    ------------------------------------------- */
-    const useKde = displayKde !== null ? displayKde : cfg.kde;
-
-    if (useKde) {
-        const totalCounts = buckets.map((b, i) =>
-            raceSeries.reduce((sum, r) => sum + r.counts[i], 0)
-        );
-
-        const kdeValues = computeKDE(xs, totalCounts, cfg.bandwidth);
-        const maxBar = Math.max(...totalCounts);
-        const maxKde = Math.max(...kdeValues) || 1;
-
-        const scaled = kdeValues.map(v => v * maxBar / maxKde);
-
-        datasets.push({
-            type: "line",
-            label: "KDE",
-            data: scaled,
-            borderColor: raceColorsSolid[0],
-            borderWidth: 3,
-            tension: 0.25,
-            pointRadius: 0
+            type: "line", label: "KDE", data: scaleKDE(computeKDE(xs, totals, 45), totals),
+            borderColor: raceColor(0, 1), borderWidth: 3, tension: 0.25, pointRadius: 0
         });
     }
-
-    /* -------------------------------------------
-       DRAW CHART
-    ------------------------------------------- */
-    if (ctx._chart) ctx._chart.destroy();
-
-    ctx._chart = new Chart(ctx, {
+    replaceChart(canvas, {
         data: { labels, datasets },
         options: {
             responsive: true,
@@ -192,40 +55,26 @@ export async function renderCheckpointHistogram(
             scales: {
                 x: {
                     stacked: true,
-                    title: { display: true, text: "Zeit (hh:mm:ss)" },
+                    title: { display: true, text: cfg.title },
                     ticks: {
                         autoSkip: false,
-                        callback: (value, index) =>
-                            index % cfg.tickStep === 0 ? labels[index] : ""
-                    }
+                        callback: (value, index) => index % cfg.tickStep === 0 ? labels[index] : "",
+                        minRotation: 45, maxRotation: 90
+                    },
+                    ...(cfg.sparseGrid ? { grid: {
+                        color: context => context.tick && context.tick.value % cfg.tickStep === 0 ? undefined : "transparent",
+                        lineWidth: context => context.tick && context.tick.value % cfg.tickStep === 0 ? undefined : 0
+                    } } : {})
                 },
-                y: {
-                    stacked: true,
-                    beginAtZero: true,
-                    title: { display: true, text: "Teilnehmer" }
-                }
+                y: { stacked: true, beginAtZero: true, title: { display: true, text: "Teilnehmer" } }
             }
         }
     });
 }
 
-/* -------------------------------------------------------
-   Render all checkpoints (stacked) with fixed IDs
-------------------------------------------------------- */
 export async function renderAllCheckpointHistograms() {
-    await loadCheckpointData();
-
-    const mapping = {
-        "histStart": "start_histogram_buckets",
-        "histRothenhusen": "split_rothenhusen_histogram_buckets",
-        "histRegistration": "registration_histogram_buckets",
-        "histFinish": "finish_histogram_buckets"
-    };
-
-    for (const [canvasId, bucketField] of Object.entries(mapping)) {
-        const canvas = document.getElementById(canvasId);
-        if (canvas) {
-            renderCheckpointHistogram(canvasId, bucketField);
-        }
-    }
+    await Promise.all(Object.entries({
+        histStart: "start_histogram_buckets", histRothenhusen: "split_rothenhusen_histogram_buckets",
+        histRegistration: "registration_histogram_buckets", histFinish: "finish_histogram_buckets"
+    }).map(([id, field]) => renderCheckpointHistogram(id, field)));
 }

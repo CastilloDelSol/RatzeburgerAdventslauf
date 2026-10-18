@@ -1,14 +1,18 @@
+import { replaceChart, resolveElement } from "./chartLifecycle.js";
+import { genderColor } from "./chartTheme.js";
+import { formatNumber } from "./format.js";
 
 // distancePercentile.js
 
 import { loadGeoData } from "./dataLoader.js";
 
 export async function renderDistancePercentile(canvasId) {
+    const canvas = resolveElement(canvasId);
+    if (!canvas) return;
     const geo = await loadGeoData();
 
     if (!geo || !geo.percentiles_km) {
-        console.error("No percentile data found");
-        return;
+        throw new Error("No percentile data found");
     }
 
     // -------------------------------------------------------------
@@ -27,15 +31,15 @@ export async function renderDistancePercentile(canvasId) {
     // -------------------------------------------------------------
     // 2. Create Chart.js Percentile Line Chart
     // -------------------------------------------------------------
-    new Chart(document.getElementById(canvasId), {
+    replaceChart(canvas, {
         type: "line",
         data: {
             labels: labels,
             datasets: [{
                 label: "Entfernung (km)",
                 data: values,
-                borderColor: "rgba(54, 162, 235, 1.0)",  // Pyramiden-Blau
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: genderColor("M"),  // Pyramiden-Blau
+                backgroundColor: genderColor("M", 0.2),
                 borderWidth: 3,
                 pointRadius: 0,
                 tension: 0.33 // leicht geglättet
@@ -66,7 +70,7 @@ export async function renderDistancePercentile(canvasId) {
                     min: 0.1,
                     ticks: {
                         callback: (v) => {
-                            return Number(v).toLocaleString() + " km";
+                            return formatNumber(Number(v), Number.isInteger(Number(v)) ? 0 : 1) + " km";
                         }
                     }
                 }
@@ -77,7 +81,7 @@ export async function renderDistancePercentile(canvasId) {
                 tooltip: {
                     callbacks: {
                         label: ctx => 
-                            `Distanz: ${ctx.raw.toFixed(2)} km`
+                            `Distanz: ${formatNumber(ctx.raw, 2)} km`
                     }
                 }
             }

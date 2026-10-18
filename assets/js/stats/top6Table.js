@@ -1,22 +1,31 @@
 // top6Table.js
-import { loadRaceStats, getRaceStats } from "./raceStatsLoader.js";
+import { loadRaceStats } from "./raceStatsLoader.js";
+import { resolveElement } from "./chartLifecycle.js";
+import { formatNumber } from "./format.js";
 
 // ======================================================================
 // RENDER TABLES (M/W)
 // ======================================================================
-export async function renderTop6Tables(raceName) {
-    await loadRaceStats(raceName);
-    const race = getRaceStats(raceName);
+export async function renderTop6Table(raceName, gender, target, limit = 6) {
+    const box = resolveElement(target);
+    if (!box) return;
+    const race = await loadRaceStats(raceName);
+    if (!race[gender]?.Top10 || !race.splits) throw new Error("Missing top results for " + gender);
+    renderOne(box, race[gender].Top10.slice(0, limit), race.splits, gender);
+}
 
-    renderOne("top6TableM", race.M.Top10.slice(0, 6), race.splits);
-    renderOne("top6TableW", race.W.Top10.slice(0, 6), race.splits);
+export async function renderTop6Tables(raceName) {
+    await Promise.all([
+        renderTop6Table(raceName, "M", "top6TableM"),
+        renderTop6Table(raceName, "W", "top6TableW")
+    ]);
 }
 
 // ======================================================================
 // INTERNAL RENDER FUNCTION
 // ======================================================================
-function renderOne(containerId, top6, splitMeta) {
-    const box = document.getElementById(containerId);
+function renderOne(target, top6, splitMeta, genderPrefix) {
+    const box = resolveElement(target);
     if (!box) return;
 
     if (!top6 || top6.length === 0) {
@@ -28,11 +37,8 @@ function renderOne(containerId, top6, splitMeta) {
     const toUppercaseName = (str) =>
         str.replace(/ß/g, "ẞ").toUpperCase();
 
-    // M20 / W20 prefix in AK column
-    const genderPrefix = containerId.endsWith("M") ? "M" : "W";
-
     // Only distances (e.g. "12.5km")
-    const splitLabels = splitMeta.map(s => `${s.distance_km}km`);
+    const splitLabels = splitMeta.map(s => `${formatNumber(s.distance_km, Number.isInteger(s.distance_km) ? 0 : 1)}km`);
 
     const lastSplitIndex = splitMeta.length - 1;
 

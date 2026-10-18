@@ -1,4 +1,4 @@
-// kds.js
+// Shared Gaussian smoothing for distance, race and checkpoint histograms.
 
 /* -------------------------------------------------------
    Gaussian KDE
@@ -22,4 +22,11 @@ export function computeKDE(xs, counts, bandwidth = 45)
     });
    
     return kdeValues;
+}
+
+// Empty histograms must produce finite zeroes instead of divisions by zero.
+export function scaleKDE(values, counts) {
+    const maxCount = Math.max(0, ...counts);
+    const maxKde = Math.max(0, ...values);
+    return values.map(value => maxKde > 0 ? value * maxCount / maxKde : 0);
 }

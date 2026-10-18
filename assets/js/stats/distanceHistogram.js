@@ -1,41 +1,21 @@
+import { computeKDE, scaleKDE } from "./kde.js";
+import { replaceChart, resolveElement } from "./chartLifecycle.js";
+import { genderColor } from "./chartTheme.js";
+import { formatNumber } from "./format.js";
 // distanceHistogram.js
 
 import { loadGeoData } from "./dataLoader.js";
 
 // --------------------------------------------------------
-// Simple Gaussian KDE for histogram smoothing
-// --------------------------------------------------------
-function gaussianKernel(x) {
-    return Math.exp(-0.5 * x * x) / Math.sqrt(2 * Math.PI);
-}
-
-function computeKDE(buckets, bandwidth = 10) {
-    // Prepare sample points (bucket midpoints)
-    const xs = buckets.map(b => (b.min + b.max) / 2);
-    const counts = buckets.map(b => b.count);
-
-    // KDE curve will be drawn on same x positions
-    const kdeValues = xs.map(x0 => {
-        let sum = 0;
-        for (let i = 0; i < xs.length; i++) {
-            const u = (x0 - xs[i]) / bandwidth;
-            sum += counts[i] * gaussianKernel(u);
-        }
-        return sum;
-    });
-
-    return { xs, kdeValues };
-}
-
-// --------------------------------------------------------
 // Render Smoothed Histogram + KDE Line
 // --------------------------------------------------------
 export async function renderDistanceHistogram(canvasId) {
+    const canvas = resolveElement(canvasId);
+    if (!canvas) return;
     const geo = await loadGeoData();
 
     if (!geo || !geo.distance_histogram) {
-        console.error("No histogram data found");
-        return;
+        throw new Error("No histogram data found");
     }
 
     // 1) BUCKET LIMIT: Only ≤200 km
@@ -48,18 +28,13 @@ export async function renderDistanceHistogram(canvasId) {
     const counts = buckets.map(b => b.count);
 
     // 4) KDE smoothing
-    const { xs, kdeValues } = computeKDE(buckets, 8);  // bandwidth 8 = good look
-
-    // Normalize KDE to match histogram height visually
-    const maxCount = Math.max(...counts);
-    const maxKde = Math.max(...kdeValues);
-    const scaleFactor = maxCount / maxKde;
-    const scaledKde = kdeValues.map(v => v * scaleFactor);
+    const xs = buckets.map(b => (b.min + b.max) / 2);
+    const scaledKde = scaleKDE(computeKDE(xs, counts, 8), counts);
 
     // --------------------------------------------------------
     // Create the chart
     // --------------------------------------------------------
-    new Chart(document.getElementById(canvasId), {
+    replaceChart(canvas, {
         data: {
             labels: labels,
             datasets: [
@@ -68,7 +43,7 @@ export async function renderDistanceHistogram(canvasId) {
                     type: "bar",
                     label: "Anzahl",
                     data: counts,
-                    backgroundColor: "rgba(54, 162, 235, 0.75)",   // pyramid blue
+                    backgroundColor: genderColor("M", 0.75),   // pyramid blue
                     borderWidth: 0
                 },
 
@@ -77,7 +52,7 @@ export async function renderDistanceHistogram(canvasId) {
                     type: "line",
                     label: "Geglättete Verteilung",
                     data: scaledKde,
-                    borderColor: "rgba(255, 99, 132, 1.0)",         // pyramid red
+                    borderColor: genderColor("W"),         // pyramid red
                     borderWidth: 3,
                     pointRadius: 0,
                     tension: 0.35,
@@ -110,9 +85,9 @@ export async function renderDistanceHistogram(canvasId) {
                     callbacks: {
                         label: ctx => {
                             if (ctx.dataset.type === "bar") {
-                                return `${ctx.raw} Teilnehmer`;
+                                return `${formatNumber(ctx.raw)} Teilnehmer`;
                             } else {
-                                return `Glättung: ${ctx.raw.toFixed(0)}`;
+                                return `Glättung: ${formatNumber(ctx.raw)}`;
                             }
                         }
                     }

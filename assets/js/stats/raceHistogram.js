@@ -1,77 +1,29 @@
-// raceHistogram.js
-import { loadRaceStats, getRaceStats } from "./raceStatsLoader.js";
-
-/* -------------------------------------------------------
-   Gaussian KDE
-------------------------------------------------------- */
-function gaussianKernel(x) {
-    return Math.exp(-0.5 * x * x) / Math.sqrt(2 * Math.PI);
-}
-
-function computeKDE(buckets, bandwidth = 45) {
-    const xs = buckets.map(b => (b.range_start + b.range_end) / 2);
-    const counts = buckets.map(b => b.count);
-
-    const kdeValues = xs.map(x0 => {
-        let sum = 0;
-        for (let i = 0; i < xs.length; i++) {
-            const u = (x0 - xs[i]) / bandwidth;
-            sum += counts[i] * gaussianKernel(u);
-        }
-        return sum;
-    });
-
-    return { xs, kdeValues };
-}
-
-/* -------------------------------------------------------
-   Time formatter
-------------------------------------------------------- */
-function secToHM(sec) {
-    const h = Math.floor(sec / 3600);
-    const m = Math.floor((sec % 3600) / 60);
-    return `${h}:${m.toString().padStart(2, "0")}`;
-}
+import { loadRaceStats } from "./raceStatsLoader.js";
+import { replaceChart, resolveElement } from "./chartLifecycle.js";
+import { genderColor } from "./chartTheme.js";
+import { formatTime } from "./format.js";
+import { computeKDE, scaleKDE } from "./kde.js";
 
 /* -------------------------------------------------------
    Render ONE histogram
 ------------------------------------------------------- */
 function renderOneHistogram(canvasId, buckets, gender) {
-    const ctx = document.getElementById(canvasId);
+    const ctx = resolveElement(canvasId);
     if (!ctx) return;
 
     // Labels "1:10–1:20"
     const labels = buckets.map(b => {
-        return `${secToHM(b.range_start)}–${secToHM(b.range_end)}`;
+        return `${formatTime(b.range_start, { showSeconds: false, padHours: false })}–${formatTime(b.range_end, { showSeconds: false, padHours: false })}`;
     });
 
     const counts = buckets.map(b => b.count);
 
-    // KDE smoothing
-    const { kdeValues } = computeKDE(buckets, 45);
+    const xs = buckets.map(b => (b.range_start + b.range_end) / 2);
+    const scaled = scaleKDE(computeKDE(xs, counts, 45), counts);
+    const barColor = genderColor(gender, 0.75);
+    const kdeColor = genderColor(gender);
 
-    // Scale KDE visually to bar height
-    const maxCount = Math.max(...counts);
-    const maxKde = Math.max(...kdeValues);
-    const scaled = kdeValues.map(v => v * maxCount / maxKde);
-
-    // Choose bar color based on gender
-    const barColor =
-        gender === "M"
-            ? "rgba(54,162,235,0.75)"
-            : "rgba(255,99,132,0.75)";
-
-    // KDE color (dark blue tint)
-   const kdeColor =
-       gender === "M"
-           ? "rgba(54,162,235,1.0)"     // strong blue
-           : "rgba(255,99,132,1.0)";     // strong magenta
-   
-
-    // Destroy old chart
-    if (ctx._chart) ctx._chart.destroy();
-
-    ctx._chart = new Chart(ctx, {
+    replaceChart(ctx, {
         type: "bar",
         data: {
             labels,
@@ -123,15 +75,19 @@ function renderOneHistogram(canvasId, buckets, gender) {
 /* -------------------------------------------------------
    MAIN EXPORT
 ------------------------------------------------------- */
+export async function renderRaceHistogram(raceName, gender, target) {
+    const canvas = resolveElement(target);
+    if (!canvas) return;
+    const race = await loadRaceStats(raceName);
+    const buckets = race[gender]?.histogram?.buckets;
+    if (!buckets) throw new Error("Missing histogram for " + gender);
+    renderOneHistogram(canvas, buckets, gender);
+}
+
+// Compatibility for the experimental page's existing imports.
 export async function renderRaceHistograms(raceName) {
-    await loadRaceStats(raceName);
-    const race = getRaceStats(raceName);
-
-    if (!race) return;
-
-    if (race.M?.histogram?.buckets)
-        renderOneHistogram("histM", race.M.histogram.buckets, "M");
-
-    if (race.W?.histogram?.buckets)
-        renderOneHistogram("histW", race.W.histogram.buckets, "W");
+    await Promise.all([
+        renderRaceHistogram(raceName, "M", "histM"),
+        renderRaceHistogram(raceName, "W", "histW")
+    ]);
 }

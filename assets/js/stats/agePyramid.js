@@ -1,29 +1,35 @@
 // agePyramid.js
 
+import { replaceChart, resolveElement } from "./chartLifecycle.js";
+import { genderColor } from "./chartTheme.js";
+import { formatNumber } from "./format.js";
+
 import { loadAgeData, getSection } from "./dataLoader.js";
 
 export async function renderAgePyramid(sectionName, canvasId, containerId) {
+  const canvas = resolveElement(canvasId);
+  const box = containerId ? resolveElement(containerId) : canvas?.parentElement;
+  if (!canvas || !box) return;
   await loadAgeData();
 
   const group = getSection(sectionName);
-  if (!group) return console.error("Section not found:", sectionName);
+  if (!group) throw new Error("Section not found: " + sectionName);
 
   const rows = group.length;
   const rowHeight = 18;
   const topBottomPadding = 90;
   const barThicknessPixel = 18;
 
-  const box = document.getElementById(containerId);
   box.style.height = (rows * rowHeight + topBottomPadding) + "px";
 
   const agegroups = group.map(e => e.AG).reverse();
   const males     = group.map(e => -e.M).reverse();
   const females   = group.map(e =>  e.W).reverse();
 
-  let maxValue = Math.max(...males.map(v => Math.abs(v)), ...females);
-  maxValue = Math.ceil(maxValue / 10) * 10;
+  let maxValue = Math.max(0, ...males.map(v => Math.abs(v)), ...females);
+  maxValue = Math.max(10, Math.ceil(maxValue / 10) * 10);
 
-  new Chart(document.getElementById(canvasId), {
+  replaceChart(canvas, {
     type: "bar",
     data: {
       labels: agegroups,
@@ -31,14 +37,14 @@ export async function renderAgePyramid(sectionName, canvasId, containerId) {
         {
           label: "M",
           data: males,
-          backgroundColor: "rgba(54, 162, 235, 1.0)",
+          backgroundColor: genderColor("M"),
           stack: "same",
           barThickness: barThicknessPixel
         },
         {
           label: "W",
           data: females,
-          backgroundColor: "rgba(255, 99, 132, 1.0)",
+          backgroundColor: genderColor("W"),
           stack: "same",
           barThickness: barThicknessPixel
         }
@@ -51,7 +57,7 @@ export async function renderAgePyramid(sectionName, canvasId, containerId) {
         x: {
           min: -maxValue,
           max:  maxValue,
-          ticks: { callback: v => Math.abs(v) }
+          ticks: { callback: v => formatNumber(Math.abs(v)) }
         },
         y: {
           type: 'category',
@@ -64,7 +70,7 @@ export async function renderAgePyramid(sectionName, canvasId, containerId) {
         tooltip: {
           callbacks: {
             title: () => "",
-            label: ctx => `${ctx.dataset.label}${ctx.label}: ${Math.abs(ctx.raw)}`
+            label: ctx => `${ctx.dataset.label}${ctx.label}: ${formatNumber(Math.abs(ctx.raw))}`
           }
         }
       }
