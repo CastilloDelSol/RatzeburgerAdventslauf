@@ -22,8 +22,8 @@ assets/
 2026/
   heatmap/                  Gleiche Struktur wie 2025
   stats/
-    index.html             Vorbereitet, Auswertungen noch auskommentiert
-    data/                  Hier später die Statistikdaten für 2026 ablegen
+    index.html             Reiter 1–4 aktiv, Ergebnisstatistiken auskommentiert
+    data/                  Statistikdaten für 2026
 ```
 
 ## Ein neues Jahr anlegen
@@ -70,10 +70,11 @@ Fehlende HTML-Elemente lösen keine Datenabfragen aus. Einzelne fehlgeschlagene
 Auswertungen erhalten einen Hinweis; andere Bereiche bleiben nutzbar. Nur per CSS
 versteckte Elemente sind weiterhin vorhanden und werden initialisiert.
 
-Für 2026 sind alle acht produktiven Statistikbereiche als ein zusammenhängender
-Kommentar vorbereitet. Sobald Daten vorliegen, den äußeren Kommentar entfernen,
-nicht benötigte Bereiche auskommentieren und den Verfügbarkeitshinweis entfernen.
-Es werden keine Statistikdaten aus 2025 als Ersatz geladen.
+Für 2026 sind die ersten vier Reiter aktiv: Teilnehmer & Läufe, Nationalität,
+Altersstruktur sowie Anreise & Herkunft. Die Reiter 5–8 sind bis zum Vorliegen der
+Ergebnisdaten auskommentiert. Zum Aktivieren die drei markierten Kommentare bei
+Radio-Buttons, Menüeinträgen und Ergebnisbereichen entfernen. Es werden keine
+Statistikdaten aus 2025 als Ersatz geladen.
 
 ## Veröffentlichung und Vorschau
 
